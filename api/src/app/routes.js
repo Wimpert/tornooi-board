@@ -103,13 +103,13 @@ module.exports = function(app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/api/profile', isLoggedIn, function(req, res) {
+    /*app.get('/api/profile', isLoggedIn, function(req, res) {
         console.log(req.user);
         console.log(req.session);
         res.send({
             user : req.user // get the user out of session and pass to template
         });
-    });
+    });*/
 
     // =====================================
     // LOGOUT ==============================
@@ -124,8 +124,9 @@ module.exports = function(app, passport) {
     /**
      * this will return the pronotiek base on who is logged in:
      */
-    app.get('/api/pronostiek', isLoggedIn, DBUtils.PronostiekUtils.getPronostiek);
-    app.post('/api/pronostiek', isLoggedIn, DBUtils.PronostiekUtils.savePronostiek);
+    //app.get('/api/tournament/:tournamentId', isLoggedIn, DBUtils.PronostiekUtils.getPronostiek);
+    app.get('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.getTournament);
+    app.post('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
 
 
 };

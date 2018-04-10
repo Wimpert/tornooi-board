@@ -67,7 +67,7 @@ module.exports = function(passport) {
                         var insertQuery = "INSERT INTO users ( username, password, isAdmin ) values (?,?,?)";
                         connection.query(insertQuery,["de_jackies", bcrypt.hashSync("spelvreugde666", null, null), "Y"],function(err, rows) {
                             if(err){return done(err);}
-                            console.log(rows);
+                           // console.log(rows);
                             return done(null, rows[0]);
                         });
                     }

@@ -1,7 +1,4 @@
 import {Request, Response} from "express";
-import {Tournament} from "../models/Tournament";
-import {getTournament} from "../utils/TournamentUtils";
-
 const mysql = require('mysql');
 const dbconfig = require('./config/database');
 const connection = mysql.createConnection(dbconfig.connection);
@@ -9,15 +6,20 @@ const connection = mysql.createConnection(dbconfig.connection);
 connection.query('USE ' + dbconfig.database);
 
 
-export class UserUtils{
+export class TournamentUtils{
+
+    public static getTournament(req: Request, res: Response){}
+
+    public static saveTournament(req: Request, res: Response){}
 
 }
 
 
+/*
 export class PronostiekUtils{
 
     public static getPronostiek(req : Request, res : Response)  {
-        /*connection.query("SELECT * FROM pronostiek WHERE userId = ?",[req.user.id], function(err : Error, rows : any){
+        /!*connection.query("SELECT * FROM pronostiek WHERE userId = ?",[req.user.id], function(err : Error, rows : any){
                         if (err)
                             throw err;
                         if(rows.length == 1){
@@ -31,12 +33,12 @@ export class PronostiekUtils{
                             prono.tournament =  getTournament();
                             res.send(prono);
                         }
-         });*/
+         });*!/
     };
 
     public static savePronostiek(req : Request, res : Response)  {
 
-        /*const prono = req.body;
+        /!*const prono = req.body;
         const now = new Date();
 
         let query : string;
@@ -57,6 +59,6 @@ export class PronostiekUtils{
                 res.send(prono);
             });
 
-        }*/
+        }*!/
     };
-}
+}*/

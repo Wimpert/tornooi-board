@@ -5,6 +5,7 @@ export class Match{
     outTeamName: string;
     homeTeamScore: number = undefined;
     outTeamScore: number = undefined;
+    terrain: string;
 
     constructor(homeTeamName: string, outTeamName : string){
         this.homeTeamName = homeTeamName;

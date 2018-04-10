@@ -72,8 +72,6 @@ module.exports = function(app, passport) {
                 }
                 return res.redirect('');
            }
-            console.log("user id");
-            console.log(user.id);
             req.logIn(user, function(err) {
 
                 if (err) { return next(err); }

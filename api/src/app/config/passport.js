@@ -50,14 +50,12 @@ module.exports = function(passport) {
 
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
-                connection.query("SELECT * FROM users WHERE username = ? or email = ?",[username, req.body.email], function(err, rows) {
+                connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) {
                     if (err)
                         return done(err);
                     if (rows.length) {
                         if(rows[0].username == username){
                             return done(null, false, messages.signUpMessages.userNameInUse);
-                        } else if(rows[0].email == req.body.email){
-                            return done(null, false, messages.signUpMessages.emailInUse);
                         } else {
                             return done(new Error("Oops, not good ! !"));
                         }
@@ -65,21 +63,12 @@ module.exports = function(passport) {
                     } else {
                         // if there is no user with that username
                         // create the user
-                        var date = new Date();
-                        var newUserMysql = {
-                            username: username,
-                            password: bcrypt.hashSync(password, null, null), // use the generateHash function in our user model
-                            email: req.body.email,
-                            firstname: req.body.firstname,
-                            lastname: req.body.lastname,
-                            creationDate: date,
-                            updateDate: date
-                        };
-                        var insertQuery = "INSERT INTO users ( username, password, email, firstname, lastname, creationdate, lastupdate ) values (?,?,?,?,?,?,?)";
-                        connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.email, newUserMysql.firstname, newUserMysql.lastname, newUserMysql.creationDate, newUserMysql.updateDate],function(err, rows) {
+
+                        var insertQuery = "INSERT INTO users ( username, password, isAdmin ) values (?,?,?)";
+                        connection.query(insertQuery,["de_jackies", bcrypt.hashSync("spelvreugde666", null, null), "Y"],function(err, rows) {
                             if(err){return done(err);}
-                            newUserMysql.id = rows.insertId;
-                            return done(null, newUserMysql);
+                            console.log(rows);
+                            return done(null, rows[0]);
                         });
                     }
                 });

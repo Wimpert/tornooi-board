@@ -28,6 +28,18 @@ export class TournamentUtils{
         });
     }
 
+    public static createNewTournament(req: Request, res: Response){
+        const now = new Date();
+        const query = "INSERT INTO tournaments ( isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
+        connection.query(query, ['Y', '', now, now], function(err : Error, rows : any){
+            if (err)
+                throw err;
+            var tournament = new Tournament();
+            tournament.id = rows.insertId;
+            res.send(tournament);
+        });
+    }
+
     public static getTournament(req: Request, res: Response){
         console.log(req.params['id']);
         connection.query("SELECT * FROM tournaments WHERE id = ?",[req.params['id']], function(err : Error, rows : any){

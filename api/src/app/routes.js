@@ -121,13 +121,10 @@ module.exports = function(app, passport) {
     });
 
 
-    /**
-     * this will return the pronotiek base on who is logged in:
-     */
-    //app.get('/api/tournament/:tournamentId', isLoggedIn, DBUtils.PronostiekUtils.getPronostiek);
     app.get('/api/tournament', DBUtils.TournamentUtils.getAllTournaments);
     app.get('/api/tournament/:id', DBUtils.TournamentUtils.getTournament);
-    app.post('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
+    app.put('/api/tournament/new', isLoggedIn, DBUtils.TournamentUtils.createNewTournament);
+    app.put('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
 
 
 };

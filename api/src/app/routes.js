@@ -104,10 +104,10 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     /*app.get('/api/profile', isLoggedIn, function(req, res) {
-        console.log(req.user);
+        console.log(req.userService);
         console.log(req.session);
         res.send({
-            user : req.user // get the user out of session and pass to template
+            userService : req.userService // get the userService out of session and pass to template
         });
     });*/
 
@@ -125,7 +125,8 @@ module.exports = function(app, passport) {
      * this will return the pronotiek base on who is logged in:
      */
     //app.get('/api/tournament/:tournamentId', isLoggedIn, DBUtils.PronostiekUtils.getPronostiek);
-    app.get('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.getTournament);
+    app.get('/api/tournament', DBUtils.TournamentUtils.getAllTournaments);
+    app.get('/api/tournament/:id', DBUtils.TournamentUtils.getTournament);
     app.post('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
 
 
@@ -135,7 +136,7 @@ module.exports = function(app, passport) {
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
     console.log(req.isAuthenticated());
-    // if user is authenticated in the session, carry on
+    // if userService is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
 

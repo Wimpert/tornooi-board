@@ -3,7 +3,7 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
-// load up the user model
+// load up the userService model
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
 var dbconfig = require('./database');
@@ -20,12 +20,12 @@ module.exports = function(passport) {
     // required for persistent login sessions
     // passport needs ability to serialize and unserialize users out of session
 
-    // used to serialize the user for the session
+    // used to serialize the userService for the session
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
 
-    // used to deserialize the user
+    // used to deserialize the userService
     passport.deserializeUser(function(id, done) {
         connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
             done(err, rows[0]);
@@ -48,8 +48,8 @@ module.exports = function(passport) {
             },
             function(req, username, password, done) {
 
-                // find a user whose email is the same as the forms email
-                // we are checking to see if the user trying to login already exists
+                // find a userService whose email is the same as the forms email
+                // we are checking to see if the userService trying to login already exists
                 connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) {
                     if (err)
                         return done(err);
@@ -61,8 +61,8 @@ module.exports = function(passport) {
                         }
 
                     } else {
-                        // if there is no user with that username
-                        // create the user
+                        // if there is no userService with that username
+                        // create the userService
 
                         var insertQuery = "INSERT INTO users ( username, password, isAdmin ) values (?,?,?)";
                         connection.query(insertQuery,["de_jackies", bcrypt.hashSync("spelvreugde666", null, null), "Y"],function(err, rows) {
@@ -97,11 +97,11 @@ module.exports = function(passport) {
                         return done(null, false, messages.loginMessages.comboNotFound); // req.flash is the way to set flashdata using connect-flash
                     }
 
-                    // if the user is found but the password is wrong
+                    // if the userService is found but the password is wrong
                     if (!bcrypt.compareSync(password, rows[0].password))
                         return done(null, false, messages.loginMessages.comboNotFound); // create the loginMessage and save it to session as flashdata
 
-                    // all is well, return successful user
+                    // all is well, return successful userService
                     return done(null, rows[0]);
                 });
             })

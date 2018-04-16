@@ -6,9 +6,13 @@ import { AppComponent } from './app.component';
 import { DisplayComponent } from './display/display.component';
 import { AdminComponent } from './admin/admin.component';
 import {RouterModule, Routes} from "@angular/router";
+import {UserService} from "./services/user.service";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import {TournamentService} from "./services/tournament.service";
 
 const appRoutes: Routes = [
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent},
 
   { path: '**', component: DisplayComponent }
 ];
@@ -25,9 +29,11 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UserService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

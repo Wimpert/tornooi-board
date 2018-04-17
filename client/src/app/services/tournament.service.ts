@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Tournament} from "../../../../api/src/models/Tournament";
 import {environment} from "../../environments/environment";
+import {of} from "rxjs/observable/of";
 
 @Injectable()
 export class TournamentService {
@@ -11,10 +12,15 @@ export class TournamentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllTournaments(): Observable<Tournament[]>{
+  getAllTournaments(): Observable<Tournament[]> {
     return this.httpClient.get<Tournament[]>(this._baseUrl+"tournament",{withCredentials:true})
   }
 
-  //getTournament(id:string)
+
+
+  getTournament(id:number) : Observable<Tournament> {
+
+    return this.httpClient.get<Tournament>(this._baseUrl+"tournament/"+id, {withCredentials:true});
+  }
 
 }

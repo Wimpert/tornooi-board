@@ -5,7 +5,23 @@
 </div>
 <div *ngIf="userService.userIsLoggedIn$ | async">
   <button (click)="logout()">Logout</button>
-  <select>
-    <option *ngFor="let tournament of (allTournaments$ | async)" value=""></option>
+  <select (change)="tournamentChosen($event)">
+    <option value="">Choose ...</option>
+    <option *ngFor="let tournament of (allTournaments$ | async)" value="{{tournament.id}}">{{tournament.id}} - {{tournament.isRef}}</option>
   </select>
+
+  <div id="admin" *ngIf="(tournamentToDisplay$ | async) as tournamentToDisplay">
+   <div class="group-containter" *ngFor="let group of tournamentToDisplay.data.groups">
+     {{group.groupname}}
+     <div *ngFor="let match of group.matches">
+       {{match.homeTeamName}} <input type="number" [(ngModel)]="match.homeTeamScore"> - <input type="number" [(ngModel)]="match.outTeamScore"> {{match.outTeamName}}
+     </div>
+     <div >
+       <h3>Stand: </h3>
+       <div *ngFor="let team of group.teams">
+         {{team.name}}: {{team.points}}
+       </div>
+     </div>
+   </div>
+  </div>
 </div>

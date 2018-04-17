@@ -18,7 +18,7 @@ export class TournamentUtils{
                 let returnVal = [];
                 for(let tournament of rows){
                     let stringValue = tournament.data.toString('utf8');
-                    tournament.data.tournament = JSON.parse(stringValue);
+                    tournament.data = JSON.parse(stringValue);
                     returnVal.push(tournament)
                 }
 
@@ -43,14 +43,13 @@ export class TournamentUtils{
     }
 
     public static getTournament(req: Request, res: Response){
-        console.log(req.params['id']);
         connection.query("SELECT * FROM tournaments WHERE id = ?",[req.params['id']], function(err : Error, rows : any){
         if (err)
             throw err;
         if(rows.length >= 1){
             let tournament = rows[0];
             let stringValue = tournament.data.toString('utf8');
-            tournament.data.tournament = JSON.parse(stringValue);
+            tournament.data = JSON.parse(stringValue);
             res.send(tournament);
         } else {
             res.sendStatus(404);

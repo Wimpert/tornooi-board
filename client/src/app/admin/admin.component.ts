@@ -3,6 +3,8 @@ import {UserService} from "../services/user.service";
 import {TournamentService} from "../services/tournament.service";
 import {Observable} from "rxjs/Observable";
 import {Tournament} from "../../../../api/src/models/Tournament";
+import {ReplaySubject} from "rxjs/ReplaySubject";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-admin',
@@ -14,12 +16,19 @@ export class AdminComponent implements OnInit {
   username: string;
   password: string;
 
-  allTournaments$: Observable<Tournament[]>
+  allTournaments$: Observable<Tournament[]>;
+  tournamentToDisplay$: Observable<Tournament>;
+  private selectChanged$ = new ReplaySubject<number>();
 
   constructor(public userService: UserService, private tournamentService: TournamentService) { }
 
   ngOnInit() {
     this.allTournaments$ = this.tournamentService.getAllTournaments();
+
+    this.tournamentToDisplay$ = this.selectChanged$.pipe(
+      switchMap(id => this.tournamentService.getTournament(id))
+    );
+
   }
 
   login(): void{
@@ -28,6 +37,11 @@ export class AdminComponent implements OnInit {
 
   logout(): void{
     this.userService.logout();
+  }
+
+  tournamentChosen(event) : void{
+    this.selectChanged$.next(event.target.value);
+
   }
 
 }

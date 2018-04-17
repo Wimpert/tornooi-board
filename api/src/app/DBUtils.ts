@@ -32,7 +32,7 @@ export class TournamentUtils{
     public static createNewTournament(req: Request, res: Response){
         let tournament  = new Tournament();
         console.log(tournament);
-        const query = "INSERT INTO tournaments ( isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
+        const query = "INSERT INTO tournaments (isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
         connection.query(query, [tournament.isRef, JSON.stringify(tournament.data), tournament.creationdate, tournament.lastupdate], function(err : Error, rows : any){
             if (err)
                 throw err;
@@ -57,7 +57,17 @@ export class TournamentUtils{
     });
     }
 
-    public static saveTournament(req: Request, res: Response){}
+    public static saveTournament(req: Request, res: Response){
+        const tournament = req.body;
+        console.log(tournament);
+        const query = "UPDATE tournaments SET  lastupdate = ? , data = ?,  isRef = ? where id = ? ";
+        const now = new Date()
+        connection.query(query,[now, JSON.stringify(tournament.data), tournament.isRef, tournament.id],function(err : Error ) {
+            if(err){throw  err;}
+            tournament.lastupdate = now ;
+            res.send(tournament);
+        });
+    }
 
 }
 

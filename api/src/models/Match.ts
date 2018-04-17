@@ -6,10 +6,21 @@ export class Match{
     homeTeamScore: number = undefined;
     outTeamScore: number = undefined;
     terrain: string;
+    startTime: Date;
 
-    constructor(homeTeamName: string, outTeamName : string){
+    constructor(homeTeamName: string, outTeamName : string, terrain?: string, startTime?: Date){
         this.homeTeamName = homeTeamName;
         this.outTeamName = outTeamName;
+        if(terrain){
+            this.terrain = terrain;
+        } else {
+            this.terrain = "Terrein";
+        }
+        if(startTime){
+            this.startTime = startTime
+        } else {
+            this.startTime = new Date();
+        }
     }
 
     getOutCome() : number {

@@ -2,14 +2,14 @@ import {Team} from "../models/Team";
 import {Group} from "../models/Group";
 import {Match} from "../models/Match";
 import {HOME_TEAM_WINS, OUT_TEAM_WINS} from "../models/Constants";
-import {Tournament} from "../models/Tournament";
+import {TournamentData} from "../models/Tournament";
 import {KnockOutRound} from "../models/KnockOutRound";
 
-export function getTournament() : Tournament {
+export function getTournamentData() : TournamentData {
 
-    console.log("***** Pronostiek generation Starting ****");
+    console.log("***** Data generation Starting ****");
 
-    let tournament : Tournament = new Tournament();
+    let tournament : TournamentData = new TournamentData();
 
     let allTeams =  [
         ["Russia", "Saudi Arabia", "Egypt", "Uruguay"],

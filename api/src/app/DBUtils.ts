@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 import {Tournament} from "../models/Tournament";
+import {getTournamentData} from "../utils/TournamentUtils";
 const mysql = require('mysql');
 const dbconfig = require('./config/database');
 const connection = mysql.createConnection(dbconfig.connection);
@@ -29,12 +30,13 @@ export class TournamentUtils{
     }
 
     public static createNewTournament(req: Request, res: Response){
-        const now = new Date();
+        let tournament  = new Tournament();
+        console.log(tournament);
         const query = "INSERT INTO tournaments ( isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
-        connection.query(query, ['Y', '', now, now], function(err : Error, rows : any){
+        connection.query(query, [tournament.isRef, JSON.stringify(tournament.data), tournament.creationdate, tournament.lastupdate], function(err : Error, rows : any){
             if (err)
                 throw err;
-            var tournament = new Tournament();
+            console.log(rows);
             tournament.id = rows.insertId;
             res.send(tournament);
         });

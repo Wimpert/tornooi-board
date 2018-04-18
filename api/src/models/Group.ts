@@ -1,6 +1,7 @@
 import {Team} from "./Team";
 import {Match} from "./Match";
 import {HOME_TEAM_WINS, OUT_TEAM_WINS} from "./Constants";
+import {compareTeams} from "../utils/TournamentUtils";
 
 export  class Group {
 
@@ -74,9 +75,13 @@ export  class Group {
         this.teams.forEach((team)=>{
             team.points = team.matchesWon*3 + team.matchesDrawed;
         });
-
-
     }
+
+    orderTeams() : void {
+        this.processMatches();
+        this.teams.sort(compareTeams);
+    }
+
 
     //this get the corresponding to the teamname passed to the method:
     getTeam(name:string) : Team{

@@ -4,7 +4,8 @@ import {TournamentService} from "../services/tournament.service";
 import {Observable} from "rxjs/Observable";
 import {Tournament} from "../../../../api/src/models/Tournament";
 import {ReplaySubject} from "rxjs/ReplaySubject";
-import {switchMap} from "rxjs/operators";
+import {merge, switchMap} from "rxjs/operators";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-admin',
@@ -19,6 +20,8 @@ export class AdminComponent implements OnInit {
   allTournaments$: Observable<Tournament[]>;
   tournamentToDisplay$: Observable<Tournament>;
   private selectChanged$ = new ReplaySubject<number>();
+  private  reqestNewTournament$ = new Subject<Tournament>();
+  private  saveTournament$ = new Subject<Tournament>();
 
   constructor(public userService: UserService, private tournamentService: TournamentService) { }
 
@@ -26,7 +29,13 @@ export class AdminComponent implements OnInit {
     this.allTournaments$ = this.tournamentService.getAllTournaments();
 
     this.tournamentToDisplay$ = this.selectChanged$.pipe(
-      switchMap(id => this.tournamentService.getTournament(id))
+      switchMap(id => this.tournamentService.getTournament(id)),
+      merge(this.reqestNewTournament$.pipe(
+        switchMap(_ => this.tournamentService.createNewTournament())
+      )),
+      merge(this.saveTournament$.pipe(
+        switchMap(tournament => this.tournamentService.saveTournament(tournament))
+      ))
     );
 
   }
@@ -42,6 +51,18 @@ export class AdminComponent implements OnInit {
   tournamentChosen(event) : void{
     this.selectChanged$.next(event.target.value);
 
+  }
+
+  save(tournament: Tournament): void {
+    tournament.data.groups.forEach((group) => {
+      group.orderTeams();
+      console.log(group);
+    });
+    this.saveTournament$.next(tournament);
+  }
+
+  createNew(): void{
+    this.reqestNewTournament$.next();
   }
 
 }

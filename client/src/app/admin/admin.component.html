@@ -9,18 +9,46 @@
     <option value="">Choose ...</option>
     <option *ngFor="let tournament of (allTournaments$ | async)" value="{{tournament.id}}">{{tournament.id}} - {{tournament.isRef}}</option>
   </select>
+  <button (click)="createNew()">Create New</button>
 
   <div id="admin" *ngIf="(tournamentToDisplay$ | async) as tournamentToDisplay">
+    <button (click)="save(tournamentToDisplay)">Save</button>
+    <label for="isRef">Ref:</label><input type="text" id="isRef" [(ngModel)]="tournamentToDisplay.isRef">
    <div class="group-containter" *ngFor="let group of tournamentToDisplay.data.groups">
      {{group.groupname}}
      <div *ngFor="let match of group.matches">
        {{match.homeTeamName}} <input type="number" [(ngModel)]="match.homeTeamScore"> - <input type="number" [(ngModel)]="match.outTeamScore"> {{match.outTeamName}}
+       <input type="text" [(ngModel)]="match.terrain">
+       <input type="text" [(ngModel)]="match.startTime">
      </div>
      <div >
        <h3>Stand: </h3>
-       <div *ngFor="let team of group.teams">
-         {{team.name}}: {{team.points}}
-       </div>
+       <table>
+         <thead>
+          <tr>
+            <th>name</th>
+            <th> won</th>
+            <th> lost</th>
+            <th> draws</th>
+            <th> scored</th>
+            <th>concieved</th>
+            <th>points</th>
+            <th>index</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr *ngFor="let team of group.teams">
+            <td>{{team.name}}</td>
+            <td>{{team.matchesWon}}</td>
+            <td>{{team.matchesLost}}</td>
+            <td>{{team.matchesDrawed}}</td>
+            <td>{{team.goalsScored}}</td>
+            <td>{{team.goalsConcieved}}</td>
+            <td>{{team.points}}</td>
+            <td><input type="text" [(ngModel)]="team.internalIndex"></td>
+          </tr>
+         </tbody>
+       </table>
      </div>
    </div>
   </div>

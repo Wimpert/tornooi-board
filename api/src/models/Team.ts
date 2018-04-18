@@ -9,6 +9,7 @@ export class Team {
     matchesDrawed: number = 0;
     goalsScored: number = 0;
     goalsConcieved: number = 0;
+    internalIndex: 0;
 
 
     constructor(name:string){

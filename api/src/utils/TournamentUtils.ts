@@ -43,17 +43,25 @@ export function getTournamentData() : TournamentData {
     return tournament;
 }
 
+
+
 export function compareTeams(teama: Team, teamb : Team) : number {
 
     if(teama.points != teamb.points){
         //compare on points:
         return teamb.points - teama.points;
-    } else if(teama.getGoalsDifference() != teamb.getGoalsDifference()){
-        //compare on goal diff:
-        return teamb.getGoalsDifference() -teama.getGoalsDifference();
+    } else if(teama.matchesWon != teamb.matchesWon){
+        // on matchesWon :
+        return teamb.matchesWon - teama.matchesWon;
     } else if(teama.goalsScored != teamb.goalsScored){
         // on goals scored:
         return teamb.goalsScored - teama.goalsScored;
+    } else if(teama.getGoalsDifference() != teamb.getGoalsDifference()){
+        //compare on goal diff:
+        return teamb.getGoalsDifference() -teama.getGoalsDifference();
+    } else if(teama.internalIndex != teamb.internalIndex){
+        //compare on goal diff:
+        return teamb.internalIndex -teama.internalIndex;
     }
     return 0
 }

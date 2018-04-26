@@ -12,14 +12,14 @@ export function getTournamentData() : TournamentData {
     let tournament : TournamentData = new TournamentData();
 
     let allTeams =  [
-        ["Russia", "Saudi Arabia", "Egypt", "Uruguay"],
-        ["Portugal", "Spain", "Morocco", "Iran"],
-        ["France", "Australia", "Peru", "Denmark"],
-        ["Argentina", "Iceland", "Croatia", "Nigeria"],
-        ["Brazil", "Switzerland", "Costa Rica", "Serbia"],
-        ["Germany", "Mexico", "Sweden", "Korea Republic"],
-        ["Belgium", "Panama", "Tunisia", "England"],
-        ["Poland", "Senegal", "Colombia", "Japan"],
+        ["JH 't Arsenaal", "Mavito bvba", "PTC De Vlasschaard", "MVC Omniflor"],
+            ["Hombres Calientes", "De Carlsbergskes", "Par Hazard", "Stasebeke"],
+            ["Dakwerken Dimi", "DRST Eclips", "Hoste-Concept", "MVC The Comix"],
+            ["Whoepi-Zwevegem", "Hundes Intertapis", "MVC Café De Gouden Aap", "1255 Snooker Pocket"],
+            ["Spectrum", "Re-United", "Samba", "MVC Vermeren"],
+            ["FC Dutoit", "Decorte zotten", "Den befkeuning & Co", "Los Borrachos"],
+            ["sv Ziggy", "BP De Vlasbloem", "FC Kruisband", "Whoepi-Boys"],
+            ["Dynamo Molhoek", "MVC Foliefotografie", "De Seizoeners", "DRST Eclips Zuipteam"],
     ];
 
     let groupLetter = ["A", "B", "C", "D", "E", "F", "G", "H"];

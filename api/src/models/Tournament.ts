@@ -1,3 +1,4 @@
+import { TournamentData } from './TournamentData';
 import {Group} from "./Group";
 import {KnockOutRound} from "./KnockOutRound";
 import {getTournamentData} from "../utils/TournamentUtils";
@@ -13,20 +14,11 @@ export class Tournament{
 
     constructor(){
         let now = new Date();
-        this.data = getTournamentData();
+       // this.data = getTournamentData();
+       this.data = new TournamentData();
         this.creationdate = now;
         this.lastupdate = now;
         this.isRef = 'N';
     }
 
-}
-
-export class TournamentData{
-    groups : Group[];
-    knockOutRounds :  KnockOutRound[];
-
-    constructor() {
-        this.groups = [];
-        this.knockOutRounds = [];
-    }
 }

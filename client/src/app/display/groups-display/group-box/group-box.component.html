@@ -1,0 +1,51 @@
+<div class="group-panel">
+    <div class="standings-panel">        
+        <div class="table-header row">
+            <div class="table-header-cell no-shrink cell-with-content width-5">#</div>
+            <div class="table-header-cell no-shrink cell-with-content width-55">Ploeg</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">GW</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">W</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">G</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">V</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">DV</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">DT</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">DS</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">p</div>
+        </div>
+       <div class="row margin1em" *ngFor="let team of group.teams; let index = index">
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{index+1}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-55">{{team.name}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.matchesPlayed}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.matchesWon}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.matchesLost}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.matchesDrawed}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.goalsScored}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.goalsConcieved}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.goalsScored - team.goalsConcieved}}</div>
+            <div class="table-header-cell no-shrink cell-with-content width-5">{{team.points}}</div>
+        </div>
+    </div>
+    <div class="match-panel">
+        <div class="row margin1em" *ngFor="let match of group.matches">
+            <!--<div class="width-5">{{match.matchNumber}}</div>-->
+            <div class="width-10"><strong>{{match.time | date : 'HH:mm'}}</strong></div>
+            <div class="width-5"><strong>T{{match.ground}}</strong></div>
+            <div class="width-20"><strong>{{match.homeTeam?match.homeTeam.name:" "}}</strong></div>
+            <div class="width-5">{{match.homeTeamScore}}</div>
+            <div class="width-5"> - </div>
+            <div class="width-5">{{match.outTeamScore}}</div>
+            <div class="width-20"><strong>{{match.outTeam?match.outTeam.name:" "}}</strong></div>
+            <div class="width-30">{{match.ref}}</div>
+        </div>
+    </div>
+    <!--<div class="match-panel">-->
+        <!--<div *ngFor="let match of group.matches">-->
+            <!--<div class="group-match">-->
+                <!--<div>Om {{match.time  | date:'HH:mm' }} op {{match.ground}}</div>-->
+                <!--<div [ngClass]="{strong: isWinner(match.homeTeam)}" >{{match.homeTeam.name}}</div>-->
+                <!--<div>{{match.homeTeamScore}} - {{match.outTeamScore}}</div>-->
+                <!--<div  [ngClass]="{strong: isWinner(match.outTeam)}">{{match.outTeam.name}}</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

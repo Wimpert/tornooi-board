@@ -1,1 +1,204 @@
 /* You can add global styles to this file, and also import other style files */
+
+html{
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+app-root{
+    height: 100%;
+}
+
+.app-container{
+  height: 100%;
+}
+
+.scorebox{
+    width: 4em;
+}
+
+.groundbox{
+    width: 5em;
+}
+
+.group-page{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+group-box{
+    margin: 0.1em;
+    flex-grow:1;
+    height: 25%;
+    align-content: space-around;
+    align-items: baseline;
+    font-size: 20px;
+
+}
+
+.standings-panel{
+    width: 40%;
+}
+
+.match-panel{
+    width: 60%;
+    margin: 0em 0em 0em 2em;
+}
+
+
+
+.page{
+    width: 210mm;
+    height: 300mm;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.game-sheet{
+    flex-grow: 1;
+    flex-basis: 25%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    /*max-width: 50%;*/
+}
+
+.width-5 { width: 5%; }
+.width-10 { width: 10%; }
+.width-15 { width: 15%; }
+.width-20 { width: 20%; }
+.width-25 { width: 25%; }
+.width-30 { width: 30%; }
+.width-35 { width: 35%; }
+.width-40 { width: 40%; }
+.width-50 { width: 50%; }
+.width-55 { width: 55%; }
+.width-60 { width: 60%; }
+.width-100 { width: 100%; }
+
+
+
+.height-5 { flex-grow: 5; }
+.height-10 { flex-grow: 10; }
+.height-15 { flex-grow: 15; }
+.height-20 { flex-grow: 20; }
+.height-25 { flex-grow: 25; }
+.height-30 { flex-grow: 30; }
+.height-40 { flex-grow: 40; }
+.height-50 { flex-grow: 50; }
+.height-60 { flex-grow: 60; }
+
+.no-shrink{
+    flex-shrink: 0;
+}
+
+.border{
+    border: solid #404040 1px;
+}
+
+.border-no-top{
+    border: solid #404040 1px;
+    border-top: none;
+}
+
+.border-no-top-no-bottom{
+    border: solid #404040 1px;
+    border-top: none;
+    border-bottom: none;
+}
+
+.cell-with-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+.cell-with-no-content{
+  padding: 0.2em;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    padding-top: 0.2em;
+}
+
+.table-header {
+    background-color: #878787;
+    color: white;
+}
+
+.table-header-cell{
+    margin: 1px 0px 1px 0px;
+}
+
+rounds-display{
+
+}
+
+.round-display-panel{
+    margin: 1em 1em 1em 1em ;
+    height: 50%;
+    font-size: 20px;
+
+}
+
+.match-admin-panel{
+  flex-grow: 1;
+  flex-basis: 60%;
+}
+
+.group-admin-panel{
+  flex-grow: 1;
+}
+
+.group-admin {
+  display: flex;
+}
+
+.group-panel{
+    display: flex;
+    flex-direction: row;
+}
+.margin1em{
+    margin: 0.5em;
+}
+
+sponsor-display{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.sponser-box{
+    height: 30%;
+}
+
+.no-grow{
+    flex-grow: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.fullscreen-image{}
+
+.none{
+    display: none;
+}

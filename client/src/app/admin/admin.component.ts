@@ -1,68 +1,71 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from "../services/user.service";
-import {TournamentService} from "../services/tournament.service";
-import {Observable} from "rxjs/Observable";
-import {Tournament} from "../../../../api/src/models/Tournament";
-import {ReplaySubject} from "rxjs/ReplaySubject";
-import {merge, switchMap} from "rxjs/operators";
-import {Subject} from "rxjs/Subject";
+import { TournamentData } from './../../../../api/src/models/TournamentData';
+import { Component, OnInit, group } from '@angular/core';
+import {TournamentService} from "../services/tournament/tournament.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {isUndefined} from "util";
+import { switchMap } from 'rxjs/operators';
+import { proccesMatches, compareTeams, addToNextRound } from '../../../../api/src/utils/TournamentUtils';
+
+declare var TournamentUtils : any;
 
 @Component({
-  selector: 'app-admin',
+  selector: 'admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
 
-  username: string;
-  password: string;
+  interVal: any;
+  tournament : TournamentData = undefined;
 
-  allTournaments$: Observable<Tournament[]>;
-  tournamentToDisplay$: Observable<Tournament>;
-  private selectChanged$ = new ReplaySubject<number>();
-  private  reqestNewTournament$ = new Subject<Tournament>();
-  private  saveTournament$ = new Subject<Tournament>();
 
-  constructor(public userService: UserService, private tournamentService: TournamentService) { }
+  constructor( private router: Router,private route: ActivatedRoute, private tournamentService : TournamentService) { }
+
+  ngOnDestroy() {
+    //window.clearTimeout(this.interVal);
+  }
+
 
   ngOnInit() {
-    this.allTournaments$ = this.tournamentService.getAllTournaments();
-
-    this.tournamentToDisplay$ = this.selectChanged$.pipe(
-      switchMap(id => this.tournamentService.getTournament(id)),
-      merge(this.reqestNewTournament$.pipe(
-        switchMap(_ => this.tournamentService.createNewTournament())
-      )),
-      merge(this.saveTournament$.pipe(
-        switchMap(tournament => this.tournamentService.saveTournament(tournament))
+    this.route.params.pipe(switchMap((params: Params) =>
+        this.tournamentService.getTournament(params['id'])
       ))
+    // (+) converts string 'id' to a number
+      .subscribe((tour: any) => {
+        this.tournament = tour.data;
+        this.updateStandings();
+      }
     );
 
-  }
-
-  login(): void{
-    this.userService.login(this.username, this.password, true);
-  }
-
-  logout(): void{
-    this.userService.logout();
-  }
-
-  tournamentChosen(event) : void{
-    this.selectChanged$.next(event.target.value);
 
   }
 
-  save(tournament: Tournament): void {
-    tournament.data.groups.forEach((group) => {
-      group.orderTeams();
-      console.log(group);
-    });
-    this.saveTournament$.next(tournament);
+  save():void{
+    // console.log("saving");
+    // this.tournamentService.saveTournament(this.tournament).subscribe(
+    //   (data)=>{
+    //     if(data.id){
+    //       this.router.navigate(['/admin', data.id]);
+    //     } else {
+    //       this.tournament = data;
+    //     }
+    //   }
+    // );
   }
 
-  createNew(): void{
-    this.reqestNewTournament$.next();
+  onChanged(match){
+    this.updateStandings();
   }
 
+  process(groupIndex){
+   addToNextRound(this.tournament,groupIndex);
+
+  }
+
+  private updateStandings(): void {
+this.tournament.groups.forEach((group) => {
+  proccesMatches(group);
+  group.teams.sort(compareTeams);
+});
+  }
 }

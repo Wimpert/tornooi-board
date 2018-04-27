@@ -1,0 +1,33 @@
+
+    <div class="page" *ngFor="let page of pages;">
+        <div class="game-sheet" *ngFor="let match of page">
+            <div class="height-5 border row">
+                <div class="width-10 cell-with-content border-no-top-no-bottom">{{match.matchNumber}}</div>
+                <div class="width-20 cell-with-content border-no-top-no-bottom">{{match.time | date:'HH:mm'}}</div>
+                <div class="width-60 cell-with-content border-no-top-no-bottom">{{match.ref}}</div>
+                <div class="width-10 cell-with-content border-no-top-no-bottom">T{{match.ground}}</div>
+            </div>
+            <div class="height-15 border-no-top row">
+                <div class="width-40 border-no-top-no-bottom cell-with-content">{{match.homeTeam? match.homeTeam.name : ""}}</div>
+                <div class="width-20 border-no-top-no-bottom cell-with-no-content">Eindstand:</div>
+                <div class="width-40 border-no-top-no-bottom cell-with-content">{{match.outTeam? match.outTeam.name : ""}}</div>
+            </div>
+            <div class="height-20 border-no-top row">
+                <div class="width-25 border-no-top-no-bottom cell-with-no-content ">Goals Thuisploeg:</div>
+                <div class="width-25 border-no-top-no-bottom cell-with-no-content ">Corners Thuisploeg:</div>
+                <div class="width-25 border-no-top-no-bottom cell-with-no-content ">Goals Uitploeg:</div>
+                <div class="width-25 border-no-top-no-bottom cell-with-no-content ">Corners Uitploeg:</div>
+            </div>
+            <div class="height-40 border-no-top row">
+                <div class="width-100 border-no-top-no-bottom cell-with-no-content">
+                    Kaarten/opmerkingen:
+                </div>
+            </div>
+
+            <div class="height-20 border-no-top row">
+                <div class="width-50 border-no-top-no-bottom cell-with-no-content ">Handtekening Thuisploeg</div>
+                <div class="width-50 border-no-top-no-bottom cell-with-no-content ">Handtekening Uitploeg</div>
+            </div>
+        </div>
+    </div>
+

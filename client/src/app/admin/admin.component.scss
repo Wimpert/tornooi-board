@@ -1,4 +1,8 @@
-.group-containter{
-  border: solid 1px gray;
-  padding: 10px;
+div{
+    margin: 1em;
+}
+
+.group-admin{
+    display: flex;
+    flex-direction: row;
 }

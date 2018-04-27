@@ -7,8 +7,10 @@ export class Match{
     outTeamScore: number = undefined;
     terrain: string;
     startTime: Date;
+    matchNumber: number;
+    ref: string;
 
-    constructor(homeTeamName: string, outTeamName : string, terrain?: string, startTime?: Date){
+    constructor(homeTeamName?: string, outTeamName?: string, terrain?: string, startTime?: Date){
         this.homeTeamName = homeTeamName;
         this.outTeamName = outTeamName;
         if(terrain){
@@ -45,6 +47,10 @@ export class Match{
 export class KnockoutMatch extends Match {
     homeTeamPenaltyScore : number = undefined;
     outTeamPenaltyScore: number = undefined;
+    from: number;
+    to: number;
+
+    
 
     getOutCome() : number {
         let outCome =  super.getOutCome();

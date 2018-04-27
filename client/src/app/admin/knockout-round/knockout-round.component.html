@@ -1,0 +1,5 @@
+<div>{{round.name}} - Toon: <input type="checkbox" [(ngModel)]="round.show" ></div>
+<button (click)="process()">verwerk</button>
+<div *ngFor="let match of round.matches">
+  <knockout-match [match]="match"></knockout-match>
+</div>

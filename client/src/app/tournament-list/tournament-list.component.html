@@ -1,0 +1,12 @@
+<a href="#/admin">Start new</a>
+<ul>
+  <li *ngFor="let tour of existingTournaments">
+    <a href="#/admin/{{tour.id}}">{{tour.name}}</a>
+     -
+    <a href="#/rounds/{{tour.id}}">Rounds</a>
+      -
+      <a href="#/groups/{{tour.id}}/0">Groups 1-4</a>
+      -
+      <a href="#/groups/{{tour.id}}/4">Groups 5-8</a>
+  </li>
+</ul>

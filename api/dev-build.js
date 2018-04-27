@@ -40,7 +40,7 @@ browserSync.init({
     ],
     plugins: ['bs-pretty-message'],
     files: [
-        'app/css/*.css',
+        'app/css/*.scss',
         'app/*.html',
         'app/bundle.js'
     ]

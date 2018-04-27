@@ -1,0 +1,7 @@
+<div class="group-page" *ngIf="tournament && tournament.groups && !showSponsor">
+  <group-box [group]="tournament.groups[index]"></group-box>
+  <group-box [group]="tournament.groups[index+1]"></group-box>
+  <group-box [group]="tournament.groups[index+2]"></group-box>
+  <group-box [group]="tournament.groups[index+3]"></group-box>
+</div>
+<sponsor-display [ngClass]="{'none': !showSponsor}" [isShown]="showSponsor" ></sponsor-display>

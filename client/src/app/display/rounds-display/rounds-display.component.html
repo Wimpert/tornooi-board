@@ -1,0 +1,31 @@
+<div *ngIf="tournament && !showSponsor">
+  <div class="round-display-panel" *ngFor="let round of tournament.rounds">
+    <div *ngIf="round.show">
+      <div class="row table-header">
+        <div class="table-header-cell no-shrink cell-with-content width-5">NR</div>
+        <div class="table-header-cell no-shrink cell-with-content width-10">Tijd</div>
+        <div class="table-header-cell no-shrink cell-with-content width-5"></div>
+        <div class="table-header-cell no-shrink cell-with-content width-15">Thuisploeg</div>
+        <div class="table-header-cell no-shrink cell-with-content width-5"></div>
+        <div class="table-header-cell no-shrink cell-with-content width-5"></div>
+        <div class="table-header-cell no-shrink cell-with-content width-5"></div>
+        <div class="table-header-cell no-shrink cell-with-content width-15">Uitploeg</div>
+        <div class="table-header-cell no-shrink cell-with-content width-10">Terrein</div>
+        <div class="table-header-cell no-shrink cell-with-content width-20">Ref</div>
+      </div>
+      <div class="row" *ngFor="let match of round.matches">
+        <div class="no-shrink cell-with-content width-5"> {{match.matchNumber}} </div>
+        <div class="no-shrink cell-with-content width-10"> {{match.time | date:'HH:mm'}} </div>
+        <div class="no-shrink cell-with-content width-5"> {{match.from}} - {{match.to}} </div>
+        <div class="no-shrink cell-with-content width-15"> <span *ngIf="match.homeTeam" [ngClass]="{'bold': isWinner(match,match.homeTeam)}">{{match.homeTeam.name}}</span> </div>
+        <div class="no-shrink cell-with-content width-5">{{match.homeTeamScore}}{{match.homeTeamPenaltyScore?" ("+match.homeTeamPenaltyScore+")":""}}</div>
+        <div class="no-shrink cell-with-content width-5">-</div>
+        <div class="no-shrink cell-with-content width-5">{{match.outTeamScore}}{{match.outTeamPenaltyScore?" ("+match.outTeamPenaltyScore+")":""}}</div>
+        <div class="no-shrink cell-with-content width-15"> <span *ngIf="match.outTeam" [ngClass]="{'bold': isWinner(match,match.outTeam)}">{{match.outTeam.name}}</span> </div>
+        <div class="no-shrink cell-with-content width-10"> {{match.ground}} </div>
+        <div class="no-shrink cell-with-content width-25"> {{match.ref}} </div>
+      </div>
+    </div>
+  </div>
+</div>
+<sponsor-display [ngClass]="{'none': !showSponsor}" ></sponsor-display>

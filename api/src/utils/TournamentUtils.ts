@@ -1,9 +1,9 @@
+import { KnockOutRound } from './../models/KnockOutRound';
 import {Team} from "../models/Team";
 import {Group} from "../models/Group";
 import {Match} from "../models/Match";
 import {HOME_TEAM_WINS, OUT_TEAM_WINS} from "../models/Constants";
-import {TournamentData} from "../models/Tournament";
-import {KnockOutRound} from "../models/KnockOutRound";
+import {TournamentData} from "../models/TournamentData";
 
 export function getTournamentData() : TournamentData {
 
@@ -35,10 +35,13 @@ export function getTournamentData() : TournamentData {
 
     let rounds=["Round of 16", "Quarter Final", "Semi Final", "Final"];
 
-    rounds.forEach((roundName) => {
-        let knockOutRound = new KnockOutRound(roundName, []);
-        tournament.knockOutRounds.push(knockOutRound);
-    });
+    //this is no longer used ..
+    // rounds.forEach((roundName) => {
+    //     //let knockOutRound = new KnockOutRound(roundName, []);
+
+    //     let knockOutRound = new KnockoutRound();
+    //     tournament.rounds.push(knockOutRound);
+    // });
 
     return tournament;
 }
@@ -244,6 +247,121 @@ function getSubGroupFromOriginalGroup (originalGroup  : Group, subGroup : Group 
     return returnVal;
 
 }
+
+export function getMatchesOrderedForTimeSetting(tournament: TournamentData) : Match[] {
+    var returnVal: Match[]= [];
+    tournament.groups.forEach(function (group: Group) {
+        group.matches.forEach(function (match: Match) {
+            returnVal.push(match);
+        })
+    });
+
+    returnVal.sort(function (a,b) {
+        return a.matchNumber - b.matchNumber;
+    })
+
+    tournament.rounds.forEach(function (round: KnockOutRound) {
+        for(var i = 8 ; i < 16 ; i ++){
+            returnVal.push(round.matches[i]);
+        }
+
+        for(var i = 0 ; i < 8 ; i ++){
+            returnVal.push(round.matches[i]);
+        }
+    });
+    return returnVal;
+}
+
+export function getMatchesOrderedByMatchNr(tournament: any) : any{
+
+  var returnVal :any = [];
+  tournament.groups.forEach(function (group: any) {
+    group.matches.forEach(function (match: any) {
+        returnVal.push(match);
+    })
+  });
+
+    tournament.rounds.forEach(function (round: any) {
+        round.matches.forEach(function (match: any) {
+            returnVal.push(match);
+        })
+    });
+
+
+
+    returnVal.sort((match1:any, match2: any) => {
+        return match1.matchNumber - match2.matchNumber;
+    });
+    return returnVal;
+}
+
+export function addToNextRound(tournament : any,groupIndex: any) {
+  var achtsteFinale = tournament.rounds[0];
+    if (groupIndex == 0) {
+      achtsteFinale.matches[0].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[4].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[8].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[12].outTeam = tournament.groups[groupIndex].teams[3];
+
+    } else if (groupIndex == 1) {
+      achtsteFinale.matches[1].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[5].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[9].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[13].outTeam = tournament.groups[groupIndex].teams[3];
+
+    } else if (groupIndex == 2) {
+      achtsteFinale.matches[2].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[6].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[10].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[14].outTeam = tournament.groups[groupIndex].teams[3];
+    } else if (groupIndex == 3) {
+      achtsteFinale.matches[3].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[7].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[11].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[15].outTeam = tournament.groups[groupIndex].teams[3];
+    } else if (groupIndex == 4) {
+      achtsteFinale.matches[0].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[4].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[8].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[12].homeTeam = tournament.groups[groupIndex].teams[2];
+    } else if (groupIndex == 5) {
+      achtsteFinale.matches[1].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[5].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[9].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[13].homeTeam = tournament.groups[groupIndex].teams[2];
+    } else if (groupIndex == 6) {
+      achtsteFinale.matches[2].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[6].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[10].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[14].homeTeam = tournament.groups[groupIndex].teams[2];
+    } else if (groupIndex == 7) {
+      achtsteFinale.matches[3].outTeam = tournament.groups[groupIndex].teams[1];
+      achtsteFinale.matches[7].homeTeam = tournament.groups[groupIndex].teams[0];
+      achtsteFinale.matches[11].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[15].homeTeam = tournament.groups[groupIndex].teams[2];
+    }
+  
+}
+
+export function processRound(round: any) {
+      console.log("processing: " + round);
+      var to_add =16;
+      var second_time = true;
+      round.matches.forEach((match, index) => {
+        var old_number = match.matchNumber;
+    
+      var winner_number =   to_add + old_number;
+      //console.log(to_add + " + " +  old_number +"=" + winner_number);
+      console.log(old_number + " - " + winner_number);
+      if(second_time){
+        to_add--;
+        second_time = false;
+      } else {
+        second_time = true;
+      }
+    
+    })
+    }
 
 
 

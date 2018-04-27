@@ -9,7 +9,7 @@ export class Team {
     matchesDrawed: number = 0;
     goalsScored: number = 0;
     goalsConcieved: number = 0;
-    internalIndex: 0;
+    internalIndex = 0;
 
 
     constructor(name:string){
@@ -47,6 +47,10 @@ export class Team {
         team.goalsConcieved = Number(input.goalsConcieved);
         return team;
 
+    }
+
+    get matchesPlayed() :number {
+        return this.matchesDrawed+this.matchesWon+this.matchesLost;
     }
 
 

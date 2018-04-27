@@ -4,10 +4,25 @@ export class KnockOutRound {
 
     name: string;
     matches: KnockoutMatch[];
+    numberOfPlaces : number;
+    show: boolean;
 
-    constructor(name: string, matches : KnockoutMatch[]){
-        this.name =  name;
-        this.matches =  matches;
+    constructor(numberOfPlaces:number, name:string){
+        this.numberOfPlaces = numberOfPlaces;
+        this.matches = [];
+        this.name=name;
+        this.show = false;
+        var place = 1;
+        var index = 0;
+        for (var i = 0 ; i < 16 ; i++){
+            this.matches[i] =  new KnockoutMatch();
+            this.matches[i].from = place;
+            this.matches[i].to = place+numberOfPlaces-1;
+            index = index+2;
+            if(index%numberOfPlaces == 0){
+                place=place+numberOfPlaces;
+            }
+        }
     }
 
 }

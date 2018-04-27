@@ -1,0 +1,10 @@
+{{match.matchNumber}} -
+{{match.homeTeamName}}
+<input class="scorebox" type="number" (change)="changed()" [(ngModel)]="match.homeTeamScore">
+-
+<input class="scorebox" type="number" (change)="changed()" [(ngModel)]="match.outTeamScore">
+{{match.outTeamName}}
+
+-- <input class="groundbox" type="text" [(ngModel)]="match.terrain">
+-- <input type="text" [(ngModel)]="match.ref">
+-- <input type="datetime" [(ngModel)]="match.startTime">

@@ -1,9 +1,10 @@
+import { MATCH_IS_DRAW } from './Constants';
 import { Refs } from './Refs';
 import { KnockOutRound } from './KnockOutRound';
 
 import { Team } from './Team';
 import { Group } from './Group';
-import { getMatchesOrderedForTimeSetting, getMatchesOrderedByMatchNr } from '../utils/TournamentUtils';
+import { getMatchesOrderedForTimeSetting, getMatchesOrderedByMatchNr, addToNextRound } from '../utils/TournamentUtils';
 
 
 
@@ -143,12 +144,32 @@ export class TournamentData {
       match.ref = Refs.list[index];
     });
 
-    this.groups.forEach((group) => {
+
+    //for developement:
+    this.groups.forEach((group, index) => {
       group.matches.forEach((match) => {
         match.homeTeamScore = Math.round(Math.random()*5);
         match.outTeamScore = Math.round(Math.random()*5);
-      })
+      });
+      group.orderTeams();
+      addToNextRound(this, index);
+      this.rounds[0].matches.forEach((match)=> {
+        match.homeTeamScore = Math.round(Math.random()*5);
+        match.outTeamScore = Math.round(Math.random()*5);
+        
+        if(match.getOutCome() == MATCH_IS_DRAW){
+          match.homeTeamPenaltyScore = Math.round(Math.random()*5);
+          match.outTeamPenaltyScore = Math.round(Math.random()*5);
+          while(match.getOutCome() ===  MATCH_IS_DRAW){
+            match.outTeamPenaltyScore = Math.round(Math.random()*5);
+          }
+        }
+      });
     });
+
+
+
+    //end
 
 
   }

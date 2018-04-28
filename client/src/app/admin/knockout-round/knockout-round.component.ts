@@ -1,5 +1,5 @@
+import { KnockOutRound } from './../../../../../api/src/models/KnockOutRound';
 import {Component, OnInit, Input} from '@angular/core';
-import {Round} from "../../entities/round";
 import { processRound } from '../../../../../api/src/utils/TournamentUtils';
 
 declare var TournamentUtils : any;
@@ -11,7 +11,7 @@ declare var TournamentUtils : any;
 })
 export class KnockoutRoundComponent implements OnInit {
 
-  @Input() round:Round;
+  @Input() round:KnockOutRound;
 
   constructor() { }
 

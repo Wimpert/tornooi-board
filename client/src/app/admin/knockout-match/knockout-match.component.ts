@@ -24,7 +24,7 @@ export class KnockoutMatchComponent implements OnInit {
   }
 
   showPenals(): boolean {
-    return ((this.match.homeTeamScore != undefined && this.match.outTeamScore != undefined)
+     return ((this.match.homeTeamScore != undefined && this.match.outTeamScore != undefined)
               && (this.match.homeTeamScore == this.match.outTeamScore))
   }
 

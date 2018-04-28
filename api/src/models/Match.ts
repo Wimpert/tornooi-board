@@ -26,6 +26,7 @@ export class Match{
     }
 
     getOutCome() : number {
+        
         if(this.homeTeamScore > this.outTeamScore){
             return HOME_TEAM_WINS;
         } else if(this.outTeamScore > this.homeTeamScore){
@@ -41,6 +42,8 @@ export class Match{
 
     }
 
+    
+
 
 }
 
@@ -53,15 +56,34 @@ export class KnockoutMatch extends Match {
     
 
     getOutCome() : number {
+        
         let outCome =  super.getOutCome();
+        
+       // console.log(outCome == MATCH_IS_DRAW);
+        
         if(outCome == MATCH_IS_DRAW){
             //This means match was with penals ...
-            if(this.homeTeamPenaltyScore > this.outTeamPenaltyScore){
-                return HOME_TEAM_WINS
-            } else {
+            if(this.homeTeamPenaltyScore != undefined && this.outTeamPenaltyScore != undefined) {
+                if(this.homeTeamPenaltyScore > this.outTeamPenaltyScore){
+                    return HOME_TEAM_WINS
+              } else {
                 return OUT_TEAM_WINS
+                }
+            }else{
+                return outCome;
             }
         }
+        
         return outCome
+    }
+
+    getWinner() :  String {
+        if(this.getOutCome() === HOME_TEAM_WINS){
+            
+            return this.homeTeamName;
+        } 
+        
+        
+        return this.outTeamName;
     }
 }

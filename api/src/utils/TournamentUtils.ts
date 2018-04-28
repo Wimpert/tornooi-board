@@ -1,3 +1,4 @@
+import { KnockoutMatch } from './../models/Match';
 import { KnockOutRound } from './../models/KnockOutRound';
 import {Team} from "../models/Team";
 import {Group} from "../models/Group";
@@ -298,69 +299,88 @@ export function getMatchesOrderedByMatchNr(tournament: any) : any{
 export function addToNextRound(tournament : any,groupIndex: any) {
   var achtsteFinale = tournament.rounds[0];
     if (groupIndex == 0) {
-      achtsteFinale.matches[0].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[4].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[8].homeTeam = tournament.groups[groupIndex].teams[2];
-      achtsteFinale.matches[12].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[0].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[4].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[8].homeTeamName = tournament.groups[groupIndex].teams[2].name;
+      achtsteFinale.matches[12].outTeamName = tournament.groups[groupIndex].teams[3].name;
 
     } else if (groupIndex == 1) {
-      achtsteFinale.matches[1].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[5].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[9].homeTeam = tournament.groups[groupIndex].teams[2];
-      achtsteFinale.matches[13].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[1].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[5].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[9].homeTeamName = tournament.groups[groupIndex].teams[2].name;
+      achtsteFinale.matches[13].outTeamName = tournament.groups[groupIndex].teams[3].name;
 
     } else if (groupIndex == 2) {
-      achtsteFinale.matches[2].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[6].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[10].homeTeam = tournament.groups[groupIndex].teams[2];
-      achtsteFinale.matches[14].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[2].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[6].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[10].homeTeamName = tournament.groups[groupIndex].teams[2].name;
+      achtsteFinale.matches[14].outTeamName = tournament.groups[groupIndex].teams[3].name;
     } else if (groupIndex == 3) {
-      achtsteFinale.matches[3].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[7].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[11].homeTeam = tournament.groups[groupIndex].teams[2];
-      achtsteFinale.matches[15].outTeam = tournament.groups[groupIndex].teams[3];
+      achtsteFinale.matches[3].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[7].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[11].homeTeamName = tournament.groups[groupIndex].teams[2].name;
+      achtsteFinale.matches[15].outTeamName = tournament.groups[groupIndex].teams[3].name;
     } else if (groupIndex == 4) {
-      achtsteFinale.matches[0].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[4].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[8].outTeam = tournament.groups[groupIndex].teams[3];
-      achtsteFinale.matches[12].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[0].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[4].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[8].outTeamName = tournament.groups[groupIndex].teams[3].name;
+      achtsteFinale.matches[12].homeTeamName = tournament.groups[groupIndex].teams[2].name;
     } else if (groupIndex == 5) {
-      achtsteFinale.matches[1].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[5].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[9].outTeam = tournament.groups[groupIndex].teams[3];
-      achtsteFinale.matches[13].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[1].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[5].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[9].outTeamName = tournament.groups[groupIndex].teams[3].name;
+      achtsteFinale.matches[13].homeTeamName = tournament.groups[groupIndex].teams[2].name;
     } else if (groupIndex == 6) {
-      achtsteFinale.matches[2].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[6].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[10].outTeam = tournament.groups[groupIndex].teams[3];
-      achtsteFinale.matches[14].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[2].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[6].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[10].outTeamName = tournament.groups[groupIndex].teams[3].name;
+      achtsteFinale.matches[14].homeTeamName = tournament.groups[groupIndex].teams[2].name;
     } else if (groupIndex == 7) {
-      achtsteFinale.matches[3].outTeam = tournament.groups[groupIndex].teams[1];
-      achtsteFinale.matches[7].homeTeam = tournament.groups[groupIndex].teams[0];
-      achtsteFinale.matches[11].outTeam = tournament.groups[groupIndex].teams[3];
-      achtsteFinale.matches[15].homeTeam = tournament.groups[groupIndex].teams[2];
+      achtsteFinale.matches[3].outTeamName = tournament.groups[groupIndex].teams[1].name;
+      achtsteFinale.matches[7].homeTeamName = tournament.groups[groupIndex].teams[0].name;
+      achtsteFinale.matches[11].outTeamName = tournament.groups[groupIndex].teams[3].name;
+      achtsteFinale.matches[15].homeTeamName = tournament.groups[groupIndex].teams[2].name;
     }
   
 }
 
-export function processRound(round: any) {
-      console.log("processing: " + round);
-      var to_add =16;
-      var second_time = true;
-      round.matches.forEach((match, index) => {
-        var old_number = match.matchNumber;
+export function processRound(round: KnockOutRound) {
+      
+   
+
+      round.matches.forEach((match:KnockoutMatch, index) => {
+         
+        if(index < 8){
+            console.log("first");
+            const winnernumber = match.matchNumber+16;
+            const loserNumber = match.matchNumber+16-round.numberOfPlaces/2
+            console.log(winnernumber, loserNumber);
+            
+        } else {
+            console.log("second");
+            
+        }
+        
+         
+          
+      });
+
+    //   var to_add =16;
+    //   var second_time = true;
+    //   round.matches.forEach((match : any, index: any) => {
+    //     var old_number = match.matchNumber;
     
-      var winner_number =   to_add + old_number;
-      //console.log(to_add + " + " +  old_number +"=" + winner_number);
-      console.log(old_number + " - " + winner_number);
-      if(second_time){
-        to_add--;
-        second_time = false;
-      } else {
-        second_time = true;
-      }
+    //   var winner_number =   to_add + old_number;
+    //   //console.log(to_add + " + " +  old_number +"=" + winner_number);
+    //   console.log(old_number + " - " + winner_number);
+    //   if(second_time){
+    //     to_add--;
+    //     second_time = false;
+    //   } else {
+    //     second_time = true;
+    //   }
     
-    })
+    // })
     }
 
 

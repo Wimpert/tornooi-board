@@ -345,42 +345,27 @@ export function addToNextRound(tournament : any,groupIndex: any) {
 }
 
 export function processRound(round: KnockOutRound) {
-      
-   
-
-      round.matches.forEach((match:KnockoutMatch, index) => {
-         
-        if(index < 8){
-            console.log("first");
-            const winnernumber = match.matchNumber+16;
-            const loserNumber = match.matchNumber+16-round.numberOfPlaces/2
+    let correction = 0;
+   round.matches.forEach((match:KnockoutMatch, index) => {
+         if(index%2 == 0 ){
+             if(index != 0){
+                correction++;
+            }
+            if(correction == round.numberOfPlaces/4){
+                correction = 0;
+            }
+            console.log("even", index , "correction", correction);
+            const winnernumber = match.matchNumber+16 -correction;
+            const loserNumber = match.matchNumber+16+round.numberOfPlaces/4 - correction;
             console.log(winnernumber, loserNumber);
             
         } else {
-            console.log("second");
-            
+            console.log("odd", index, "correction", correction);
+            const winnernumber = match.matchNumber+15 -correction;
+            const loserNumber = match.matchNumber+15+round.numberOfPlaces/4 - correction;
+            console.log(winnernumber, loserNumber);
         }
-        
-         
-          
       });
-
-    //   var to_add =16;
-    //   var second_time = true;
-    //   round.matches.forEach((match : any, index: any) => {
-    //     var old_number = match.matchNumber;
-    
-    //   var winner_number =   to_add + old_number;
-    //   //console.log(to_add + " + " +  old_number +"=" + winner_number);
-    //   console.log(old_number + " - " + winner_number);
-    //   if(second_time){
-    //     to_add--;
-    //     second_time = false;
-    //   } else {
-    //     second_time = true;
-    //   }
-    
-    // })
     }
 
 

@@ -22,7 +22,7 @@
 
 
   <div *ngFor="let round of tournament.rounds">
-      <knockout-round [round]="round"></knockout-round>
+      <knockout-round [round]="round" (processRequest)="handleRequest($event)"></knockout-round>
   </div>
 
 </div>

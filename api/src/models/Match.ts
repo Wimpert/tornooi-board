@@ -77,13 +77,17 @@ export class KnockoutMatch extends Match {
         return outCome
     }
 
-    getWinner() :  String {
+    getWinner() :  string {
         if(this.getOutCome() === HOME_TEAM_WINS){
-            
+             return this.homeTeamName;
+        } 
+        return this.outTeamName;
+    }
+
+    getLoser() :  string {
+        if(this.getOutCome() === OUT_TEAM_WINS){
             return this.homeTeamName;
         } 
-        
-        
         return this.outTeamName;
     }
 }

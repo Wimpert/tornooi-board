@@ -1,10 +1,11 @@
+import { KnockOutRound } from './../../../../api/src/models/KnockOutRound';
 import { TournamentData } from './../../../../api/src/models/TournamentData';
 import { Component, OnInit, group } from '@angular/core';
 import {TournamentService} from "../services/tournament/tournament.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {isUndefined} from "util";
 import { switchMap } from 'rxjs/operators';
-import { proccesMatches, compareTeams, addToNextRound } from '../../../../api/src/utils/TournamentUtils';
+import { proccesMatches, compareTeams, addToNextRound, processRound } from '../../../../api/src/utils/TournamentUtils';
 
 declare var TournamentUtils : any;
 
@@ -63,9 +64,16 @@ export class AdminComponent implements OnInit {
   }
 
   private updateStandings(): void {
-this.tournament.groups.forEach((group) => {
-  proccesMatches(group);
-  group.teams.sort(compareTeams);
-});
+    this.tournament.groups.forEach((group) => {
+    proccesMatches(group);
+    group.teams.sort(compareTeams);
+    });
   }
+
+  handleRequest(round: KnockOutRound) : void {
+    const index = this.tournament.rounds.indexOf(round);
+    processRound(this.tournament, index);
+    
+  }
+
 }

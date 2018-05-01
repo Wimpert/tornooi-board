@@ -1,5 +1,5 @@
 import { KnockOutRound } from './../../../../../api/src/models/KnockOutRound';
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { processRound } from '../../../../../api/src/utils/TournamentUtils';
 
 declare var TournamentUtils : any;
@@ -12,14 +12,14 @@ declare var TournamentUtils : any;
 export class KnockoutRoundComponent implements OnInit {
 
   @Input() round:KnockOutRound;
+  @Output() processRequest: EventEmitter<KnockOutRound> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
 
   process():void {
-    console.log(this.round);
-    processRound(this.round);
+    this.processRequest.next(this.round);
   }
 
 }

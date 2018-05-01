@@ -344,9 +344,18 @@ export function addToNextRound(tournament : any,groupIndex: any) {
   
 }
 
-export function processRound(round: KnockOutRound) {
+export function processRound(tournament: TournamentData,roundIndex: number) {
+    if(roundIndex == tournament.rounds.length){
+        return;
+    }
     let correction = 0;
+    const round = tournament.rounds[roundIndex];
+    
+    const nextRound = tournament.rounds[roundIndex+1];
+
    round.matches.forEach((match:KnockoutMatch, index) => {
+        let winnernumber;
+        let loserNumber;
          if(index%2 == 0 ){
              if(index != 0){
                 correction++;
@@ -354,17 +363,35 @@ export function processRound(round: KnockOutRound) {
             if(correction == round.numberOfPlaces/4){
                 correction = 0;
             }
-            console.log("even", index , "correction", correction);
-            const winnernumber = match.matchNumber+16 -correction;
-            const loserNumber = match.matchNumber+16+round.numberOfPlaces/4 - correction;
-            console.log(winnernumber, loserNumber);
+            //console.log("even", index , "correction", correction);
+             winnernumber = match.matchNumber+16 -correction;
+             loserNumber = match.matchNumber+16+round.numberOfPlaces/4 - correction;
+            //console.log(winnernumber, loserNumber);
             
         } else {
-            console.log("odd", index, "correction", correction);
-            const winnernumber = match.matchNumber+15 -correction;
-            const loserNumber = match.matchNumber+15+round.numberOfPlaces/4 - correction;
-            console.log(winnernumber, loserNumber);
+            //console.log("odd", index, "correction", correction);
+            winnernumber = match.matchNumber+15 -correction;
+            loserNumber = match.matchNumber+15+round.numberOfPlaces/4 - correction;
+            //console.log(winnernumber, loserNumber);
         }
+
+        const winnerMatch = nextRound.matches.find((match) => {
+            return match.matchNumber == winnernumber;
+        });
+
+        const loserMatch = nextRound.matches.find((match) => {
+            return match.matchNumber == loserNumber;
+        });
+
+        if(index%2 == 0){
+            winnerMatch.homeTeamName = match.getWinner();
+            loserMatch.homeTeamName = match.getLoser();
+        } else {
+            winnerMatch.outTeamName = match.getWinner();
+            loserMatch.outTeamName = match.getLoser();
+        }
+        
+
       });
     }
 

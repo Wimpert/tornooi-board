@@ -1,3 +1,5 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -44,16 +46,18 @@ import { LoginComponent } from './login/login.component';
     PrintComponent,
     SponsorDisplayComponent,
     RefsComponent,
-    LoginComponent
+    LoginComponent,
+
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [TournamentService, RestService, SettingsService, PrintService],
+  providers: [TournamentService, RestService, SettingsService, PrintService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

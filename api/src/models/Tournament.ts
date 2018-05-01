@@ -14,8 +14,7 @@ export class Tournament{
 
     constructor(){
         let now = new Date();
-       // this.data = getTournamentData();
-       this.data = new TournamentData();
+        this.data = new TournamentData();
         this.creationdate = now;
         this.lastupdate = now;
         this.isRef = 'N';

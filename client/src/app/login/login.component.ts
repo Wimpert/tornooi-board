@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  password: string;
+
+  constructor(public userService:  UserService) { }
 
   ngOnInit() {
+  }
+
+  login(): void{
+    this.userService.login(this.username, this.password, true);
+  }
+
+  logout(): void{
+    this.userService.logout();
   }
 
 }

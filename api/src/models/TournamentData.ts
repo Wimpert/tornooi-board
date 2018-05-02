@@ -5,6 +5,7 @@ import { KnockOutRound } from './KnockOutRound';
 import { Team } from './Team';
 import { Group } from './Group';
 import { getMatchesOrderedForTimeSetting, getMatchesOrderedByMatchNr, addToNextRound } from '../utils/TournamentUtils';
+import {Match} from "./Match";
 
 
 
@@ -23,13 +24,14 @@ export class TournamentData {
   id: string ;
 
 
-  constructor() {
+  static getTournamentDataToStart() {
+    const data = new TournamentData();
     var groupLetters =  ["A","B","C","D","E","F","G","H"];
     var groupPrefix :string =  "Poele";
     var groundPrefix = "";
-    this.refreshInterVal = 1000;
-    this.showInfoTime = 30000;
-    this.showSponserTime = 5000;
+    data.refreshInterVal = 1000;
+      data.showInfoTime = 30000;
+      data.showSponserTime = 5000;
     var startTime = new Date();
     startTime.setUTCMonth(4);
     startTime.setUTCDate(10);
@@ -55,7 +57,7 @@ export class TournamentData {
 
 
     var index = 0;
-    this.groups = [];
+      data.groups = [];
 
     groupLetters.forEach((val) => {
       const teamsToAdd: Team[] = []
@@ -63,15 +65,15 @@ export class TournamentData {
         teamsToAdd.push(new Team(teamName))
       });
       let group = new Group(groupPrefix+" " +val, teamsToAdd);
-      this.groups.push(group);
+        data.groups.push(group);
       index++;
     });
 
-    this.rounds = [];
-    this.rounds.push(new KnockOutRound(16, "Achste Finales") );
-    this.rounds.push(new KnockOutRound(8, "Kwart Finales"));
-    this.rounds.push(new KnockOutRound(4,"Halve Finales"));
-    this.rounds.push(new KnockOutRound(2, "Finales"));
+      data.rounds = [];
+      data.rounds.push(new KnockOutRound(16, "Achste Finales") );
+      data.rounds.push(new KnockOutRound(8, "Kwart Finales"));
+      data.rounds.push(new KnockOutRound(4,"Halve Finales"));
+      data.rounds.push(new KnockOutRound(2, "Finales"));
 
     
     // this.rounds.push(new KnockOutRound( "Achste Finales", []));
@@ -83,20 +85,20 @@ export class TournamentData {
       //assign match numbers:
       let matchNumber = 1;
       for(var i = 0 ;  i < 6 ; i=i+2){
-          this.groups.forEach(function (group) {
+          data.groups.forEach(function (group) {
               group.matches[i].matchNumber = matchNumber++;
               group.matches[i+1].matchNumber = matchNumber++;
           })
       }
 
-      this.rounds.forEach(function (round) {
+      data.rounds.forEach(function (round) {
         round.matches.forEach(function (match) {
             match.matchNumber = matchNumber++;
         })
       });
 
 
-    var orderedMatches = getMatchesOrderedForTimeSetting(this);
+    var orderedMatches = getMatchesOrderedForTimeSetting(data);
     var playround = 0;
     var matchInRound = 0;
     var groundNumber = 1;
@@ -139,14 +141,14 @@ export class TournamentData {
       }
     });
 
-    orderedMatches = getMatchesOrderedByMatchNr(this);
+    orderedMatches = getMatchesOrderedByMatchNr(data);
     orderedMatches.forEach(function (match,index) {
       match.ref = Refs.list[index];
     });
 
 
     //for developement:
-    this.groups.forEach((group, index) => {
+    /*this.groups.forEach((group, index) => {
       group.matches.forEach((match) => {
         match.homeTeamScore = Math.round(Math.random()*5);
         match.outTeamScore = Math.round(Math.random()*5);
@@ -165,11 +167,12 @@ export class TournamentData {
           }
         }
       });
-    });
+    });*/
 
 
 
     //end
+      return data;
 
 
   }
@@ -180,6 +183,29 @@ export class TournamentData {
     }
     return ++prevGroundNumber;
   }
+
+    static deserialize(input: any) : TournamentData {
+
+        const returnVal = new TournamentData();
+        //console.log(input);
+        Object.assign(returnVal, input);
+        const newGroups = [];
+        returnVal.groups.forEach((group) => {
+
+            newGroups.push(Group.deserialize(group));
+
+        });
+        returnVal.groups = newGroups;
+
+        const newRounds = [];
+        returnVal.rounds.forEach((round) => {
+          newRounds.push(KnockOutRound.deserialize(round));
+        });
+        returnVal.rounds = newRounds;
+
+        return returnVal;
+
+    }
 
 
 

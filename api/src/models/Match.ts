@@ -90,4 +90,10 @@ export class KnockoutMatch extends Match {
         } 
         return this.outTeamName;
     }
+
+    static deserialize(input: any) : Match {
+        const m = new KnockoutMatch(input.homeTeamName, input.outTeamName);
+        Object.assign(m, input);
+        return m;
+    }
 }

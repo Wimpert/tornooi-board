@@ -21,14 +21,14 @@ export class RestService {
   }
 
   public doPut(url : string, body :any): Observable<any> {
-    return this.http.put(url,body).pipe(
+    return this.http.put(url,body, {withCredentials:true}).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body.data || body || {};
+    return body || body.data || {};
   }
 
   private handleError (error: Response | any) {

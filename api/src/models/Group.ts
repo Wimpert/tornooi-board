@@ -162,7 +162,7 @@ export  class Group {
         return false
     }
 
-    deserialize(input: any) : Group {
+    static deserialize(input: any) : Group {
             const group = new Group();
             Object.assign(group, input);
 

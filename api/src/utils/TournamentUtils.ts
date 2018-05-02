@@ -354,8 +354,8 @@ export function processRound(tournament: TournamentData,roundIndex: number) {
     const nextRound = tournament.rounds[roundIndex+1];
 
    round.matches.forEach((match:KnockoutMatch, index) => {
-        let winnernumber;
-        let loserNumber;
+        let winnernumber: number;
+        let loserNumber: number;
          if(index%2 == 0 ){
              if(index != 0){
                 correction++;

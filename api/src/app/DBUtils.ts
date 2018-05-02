@@ -1,5 +1,5 @@
+import { Tournament } from './../models/Tournament';
 import {Request, Response} from "express";
-import {Tournament} from "../models/Tournament";
 import {getTournamentData} from "../utils/TournamentUtils";
 const mysql = require('mysql');
 const dbconfig = require('./config/database');
@@ -30,8 +30,8 @@ export class TournamentUtils{
     }
 
     public static createNewTournament(req: Request, res: Response){
-        let tournament  = new Tournament();
-        console.log(tournament);
+        let tournament = new Tournament();
+        tournament.data = req.body;
         const query = "INSERT INTO tournaments (isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
         connection.query(query, [tournament.isRef, JSON.stringify(tournament.data), tournament.creationdate, tournament.lastupdate], function(err : Error, rows : any){
             if (err)

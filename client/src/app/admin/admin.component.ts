@@ -31,8 +31,8 @@ export class AdminComponent implements OnInit {
     this.route.params.pipe(switchMap((params: Params) =>
         this.tournamentService.getTournament(params['id'])
       ))
-    // (+) converts string 'id' to a number
       .subscribe((tour: any) => {
+        console.log(tour);
         this.tournament = tour.data;
         this.updateStandings();
       }
@@ -42,16 +42,17 @@ export class AdminComponent implements OnInit {
   }
 
   save():void{
-    // console.log("saving");
-    // this.tournamentService.saveTournament(this.tournament).subscribe(
-    //   (data)=>{
-    //     if(data.id){
-    //       this.router.navigate(['/admin', data.id]);
-    //     } else {
-    //       this.tournament = data;
-    //     }
-    //   }
-    // );
+    console.log("saving");
+
+    this.tournamentService.newTournament(this.tournament).subscribe(
+      (data)=>{
+        if(data.id){
+          this.router.navigate(['/admin', data.id]);
+        } else {
+          this.tournament = data;
+        }
+      }
+    );
   }
 
   onChanged(match){
@@ -73,7 +74,7 @@ export class AdminComponent implements OnInit {
   handleRequest(round: KnockOutRound) : void {
     const index = this.tournament.rounds.indexOf(round);
     processRound(this.tournament, index);
-    
+
   }
 
 }

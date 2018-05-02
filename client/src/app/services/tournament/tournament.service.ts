@@ -1,8 +1,10 @@
+import { TournamentData } from './../../../../../api/src/models/TournamentData';
 import { Tournament } from './../../../../../api/src/models/Tournament';
 import { Injectable } from '@angular/core';
 import {Observable, Observer} from "rxjs";
 import {RestService} from "../rest/rest.service";
 import {SettingsService} from "../settings/settings.service";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class TournamentService {
@@ -13,14 +15,18 @@ export class TournamentService {
 
   //public getBaseUrl() : string { return this.settingsService.backendUrl; }
   public getBaseUrl() : string { return "http://localhost:8888/api/"; }
-  private getTournamentUrl()  :  string { return this.getBaseUrl() + "tournament/get"; }
-  private getAllTournamentsUrl()  : string { return this.getBaseUrl() + "tournament/all"; }
+  private getTournamentUrl()  :  string { return this.getBaseUrl() + "tournament"; }
+  private getAllTournamentsUrl()  : string { return this.getBaseUrl() + "tournament"; }
   private newTournamentUrl()  : string { return this.getBaseUrl() +"tournament/new"; }
   private updateTournamentUrl()  : string { return this.getBaseUrl() +"tournament/update"; }
 
   public getTournament(id : string): Observable<any> {
     if(id){
-      return this.restService.doGet(this.getTournamentUrl()+"/"+id);
+      return this.restService.doGet(this.getTournamentUrl()+"/"+id).pipe(
+        map( tournament =>  {
+          tournament.data = TournamentData.deserialize(tournament.data);
+          return tournament;
+        }));
     } else {
       return new Observable((observer: Observer<Tournament>)  => observer.next(new Tournament()));
     }
@@ -30,15 +36,9 @@ export class TournamentService {
     return this.restService.doGet(this.getAllTournamentsUrl());
   }
 
-  public saveTournament(tour: Tournament): Observable<any> {
+  public newTournament(tour: TournamentData): Observable<any> {
     console.log(tour);
-    
-    if(tour.id){
-      return this.restService.doPost(this.updateTournamentUrl(), tour);
-    } else {
       return this.restService.doPut(this.newTournamentUrl(), tour);
-    }
-
   }
 
 }

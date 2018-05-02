@@ -25,4 +25,17 @@ export class KnockOutRound {
         }
     }
 
+
+    static deserialize(input: any) {
+        const round = new KnockOutRound(input.numberOfPlaces, input.name);
+        Object.assign(round,input);
+        var newMatches = [];
+        round.matches.forEach((match) => {
+
+            newMatches.push(KnockoutMatch.deserialize(match));
+        });
+        round.matches = newMatches;
+        return round;
+    }
+
 }

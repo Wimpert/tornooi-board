@@ -1,5 +1,5 @@
 Van <input type="number" [(ngModel)]="from"> - tot <input type="number" [(ngModel)]="to"> -- <button (click)="download()">download</button>
 <div *ngFor="let match of matches; let index = index">
-  <input type="checkbox" [(ngModel)]="match.selectedForPrint">  <strong>{{match.matchNumber}}: om {{match.time | date: 'HH:mm'}} op Terrein: {{match.ground}}: </strong>
-  {{match.homeTeam ? match.homeTeam.name : "Te Bepalen"}} VS {{match.outTeam ? match.outTeam.name : "Te Bepalen"}}
+  <input type="checkbox" [(ngModel)]="match.selectedForPrint">  <strong>{{match.matchNumber}}: om {{match.time | date: 'HH:mm'}} op Terrein: {{match.terrain}}: </strong>
+  {{match.homeTeamName ? match.homeTeamName : "Te Bepalen"}} VS {{match.outTeamName ? match.outTeamName : "Te Bepalen"}}
 </div>

@@ -5,8 +5,9 @@ import {isUndefined} from "util";
 import {PrintService} from "../../services/print/print.service";
 import {DatePipe} from "@angular/common";
 import {min} from "rxjs/operator/min";
+import {switchMap} from "rxjs/operators";
+import {getMatchesOrderedByMatchNr} from "../../../../../api/src/utils/TournamentUtils";
 
-declare var TournamentUtils : any;
 declare var jsPDF : any;
 
 @Component({
@@ -24,12 +25,13 @@ export class PrintComponent implements OnInit {
   constructor(private router : Router ,private route: ActivatedRoute, private tournamentService : TournamentService, private printService : PrintService) { }
 
   ngOnInit() {
-    this.route.params
-    // (+) converts string 'id' to a number
-        .switchMap((params: Params) =>
-            this.tournamentService.getTournament(params['tid'])
-        ).subscribe((tour: any) => {
-           this.matches = TournamentUtils.getMatchesOrderedByMatchNr(tour);
+    console.log("init");
+    this.route.params.pipe(
+      switchMap((params: Params) =>
+      this.tournamentService.getTournament(params['tid'])
+    )).subscribe((tour: any) => {
+      console.log(tour);
+      this.matches = getMatchesOrderedByMatchNr(tour.data);
           this.tourId = tour.id;
           this.matches.forEach(function (match) {
               match.selectedForPrint = false;
@@ -127,19 +129,19 @@ export class PrintComponent implements OnInit {
 
         doc.line((x+85), y,(x+85),(y+10));
         doc.text(match.ref,(x+textMargin+35), textHeigth);
-        doc.text("T"+match.ground,(x+textMargin+85), textHeigth);
+        doc.text("T"+match.terrain,(x+textMargin+85), textHeigth);
         doc.line(x,(y+10), (x+this.width), (y+10));
 
         //Next row:
         textHeigth =  y + 18;
         doc.setFontSize(this.normalFontSize);
         doc.line((x+40), (y+10),(x+40), (y+25));
-        doc.text(match.homeTeam?match.homeTeam.name:"", (x+textMargin), textHeigth);
+        doc.text(match.homeTeamName?match.homeTeamName:"", (x+textMargin), textHeigth);
         doc.line((x+58), (y+10),(x+58), (y+25));
         doc.setFontSize(this.smallFontSize);
         doc.text("eindstand:", (x+textMargin+40), textHeigth-5);
         doc.setFontSize(this.normalFontSize);
-        doc.text(match.outTeam?match.outTeam.name:"", (x+textMargin+58), textHeigth);
+        doc.text(match.outTeamName?match.outTeamName:"", (x+textMargin+58), textHeigth);
         doc.line(x,(y+25), (x+this.width), (y+25));
 
         //Next row:
@@ -173,12 +175,12 @@ export class PrintComponent implements OnInit {
 
 
     getFormattedTime(match) : string {
-        var hours  = new Date(match.time+"").getHours();
+        var hours  = new Date(match.startTime+"").getHours();
         var hoursString = ""+hours;
         if(hours<10){
             hoursString = "0"+hoursString;
         }
-        var minutes =  new Date(match.time+"").getMinutes()
+        var minutes =  new Date(match.startTime+"").getMinutes()
         var minutesString = ""+minutes;
 
         if(minutes<10){

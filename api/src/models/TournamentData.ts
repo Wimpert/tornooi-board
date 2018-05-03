@@ -189,7 +189,7 @@ export class TournamentData {
         const returnVal = new TournamentData();
         //console.log(input);
         Object.assign(returnVal, input);
-        const newGroups = [];
+        const newGroups: any[] = [];
         returnVal.groups.forEach((group) => {
 
             newGroups.push(Group.deserialize(group));
@@ -197,7 +197,7 @@ export class TournamentData {
         });
         returnVal.groups = newGroups;
 
-        const newRounds = [];
+        const newRounds: any[] = [];
         returnVal.rounds.forEach((round) => {
           newRounds.push(KnockOutRound.deserialize(round));
         });

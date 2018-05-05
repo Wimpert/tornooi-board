@@ -117,7 +117,7 @@ export class TournamentData {
       }
 
       match.startTime = new Date(startTime);
-      match.terrain = groundPrefix+groundNumber;
+      match.terrain = groundNumber;
       groundNumber++;
       ++matchInRound;
 

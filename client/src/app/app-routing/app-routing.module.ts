@@ -8,12 +8,14 @@ import {GroupsDisplayComponent} from "../display/groups-display/groups-display.c
 import {SettingsComponent} from "../settings/settings.component";
 import {PrintComponent} from "../admin/print/print.component";
 import {RefsComponent} from "../admin/refs/refs.component";
+import {OverviewComponent} from "../display/overview/overview.component";
 
 
 const routes: Routes = [
   { path: 'admin/:id',  component: AdminComponent},
   { path: 'all',  component: TournamentListComponent},
   { path: 'admin',  component: AdminComponent},
+  { path: 'overview/:tid',  component: OverviewComponent },
   { path: 'sheet',  component: GameSheetComponent},
   { path: 'rounds/:tid',  component: RoundsDisplayComponent},
   { path: 'groups/:tid/:gid',  component: GroupsDisplayComponent},

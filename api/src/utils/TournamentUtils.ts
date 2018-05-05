@@ -412,4 +412,32 @@ function findIndexOfGroupBasedOnName(groupToFind:Group , groups : Group[]) : any
         }
     }
 }
+
+
+export function getMatchesPerGroundOrderByStartTime(tournamentData: TournamentData) : any {
+
+    const returnVal = { 1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]};
+    tournamentData.groups.forEach((round) => {
+        round.matches.forEach((match) => {
+            returnVal[match.terrain].push(match);
+        });
+    });
+    tournamentData.rounds.forEach((round) => {
+        round.matches.forEach((match) => {
+            returnVal[match.terrain].push(match);
+        });
+    });
+
+    Object.keys(returnVal).forEach((key) => {
+        returnVal[key].sort(sortMatchesByTime);
+    });
+    return returnVal;
+
+
+}
+
+function sortMatchesByTime(a: Match, b:Match) {
+    return a.startTime.getTime() - b.startTime.getTime();
+
+}
 // *** END *** //

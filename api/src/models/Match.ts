@@ -5,18 +5,18 @@ export class Match{
     outTeamName: string;
     homeTeamScore: number = undefined;
     outTeamScore: number = undefined;
-    terrain: string;
+    terrain: number;
     startTime: Date;
     matchNumber: number;
     ref: string;
 
-    constructor(homeTeamName?: string, outTeamName?: string, terrain?: string, startTime?: Date){
+    constructor(homeTeamName?: string, outTeamName?: string, terrain?: number, startTime?: Date){
         this.homeTeamName = homeTeamName;
         this.outTeamName = outTeamName;
         if(terrain){
             this.terrain = terrain;
         } else {
-            this.terrain = "Terrein";
+            this.terrain = 1;
         }
         if(startTime){
             this.startTime = startTime

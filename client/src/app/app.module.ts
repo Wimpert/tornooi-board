@@ -27,6 +27,7 @@ import {PrintService} from "./services/print/print.service";
 import {SponsorDisplayComponent} from "./display/sponsor-display/sponsor-display.component";
 import { RefsComponent } from './admin/refs/refs.component';
 import { LoginComponent } from './login/login.component';
+import { OverviewComponent } from './display/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { LoginComponent } from './login/login.component';
     SponsorDisplayComponent,
     RefsComponent,
     LoginComponent,
+    OverviewComponent,
 
 
   ],

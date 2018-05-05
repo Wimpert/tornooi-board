@@ -28,6 +28,8 @@ import {SponsorDisplayComponent} from "./display/sponsor-display/sponsor-display
 import { RefsComponent } from './admin/refs/refs.component';
 import { LoginComponent } from './login/login.component';
 import { OverviewComponent } from './display/overview/overview.component';
+import { GroundRowComponent } from './display/overview/ground-row/ground-row.component';
+import { MatchBoxComponent } from './display/overview/ground-row/match-box/match-box.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { OverviewComponent } from './display/overview/overview.component';
     RefsComponent,
     LoginComponent,
     OverviewComponent,
+    GroundRowComponent,
+    MatchBoxComponent,
 
 
   ],

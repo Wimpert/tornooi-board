@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {map, switchMap} from "rxjs/operators";
+import {map, switchMap, tap} from "rxjs/operators";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TournamentService} from "../../services/tournament/tournament.service";
 import {Observable} from "rxjs/Observable";
@@ -14,13 +14,16 @@ import {getMatchesPerGroundOrderByStartTime} from "../../../../../api/src/utils/
 })
 export class OverviewComponent implements OnInit {
 
-  matches$ : Observable<{terrain:number, matches:Match[]}>
+  matches$ : Observable<{terrain:number, matches:Match[]}>;
+  keys: string[];
+
   constructor(private route: ActivatedRoute, private tournamentService : TournamentService) { }
 
   ngOnInit() {
     this.matches$ = this.route.params.pipe(
       switchMap((params: Params) => this.tournamentService.getTournament(params['id'])),
-      map(tournament => getMatchesPerGroundOrderByStartTime(tournament.data))
+      map(tournament => getMatchesPerGroundOrderByStartTime(tournament.data)),
+      tap( _ => this.keys = Object.keys(_))
     );
   }
 }

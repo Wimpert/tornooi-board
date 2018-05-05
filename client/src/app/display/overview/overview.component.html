@@ -1,3 +1,4 @@
-<p>
-  {{matches$ | async}}
-</p>
+<div *ngIf="matches$ | async" class="ground-row-container">
+    <app-ground-row *ngFor="let key of keys; let odd=odd;" [ngClass]="{'odd':odd}" [matches]="(matches$ | async)[key]"></app-ground-row>
+</div>
+

@@ -1,0 +1,8 @@
+:host{
+  flex-grow: 1;
+  height: 100%;
+}
+
+:host.odd{
+  background: lightgrey;
+}

@@ -8,7 +8,8 @@ import {Match} from "../../../../../../api/src/models/Match";
 })
 export class GroundRowComponent implements OnInit {
 
-  @Input() matches: Match[]
+  @Input() matches: Match[];
+  @Input() ground: string;
 
   constructor() { }
 

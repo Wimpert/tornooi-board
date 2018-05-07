@@ -1,4 +1,19 @@
 :host{
   flex-grow: 1;
   padding: 2px;
+  flex-direction: column;
+  display: flex;
+}
+
+:host>*{
+  flex-grow: 1;
+}
+
+:host>div{
+  display: flex;
+  flex-direction: row;
+}
+
+:host div>div:first-child{
+  flex-grow: 1;
 }

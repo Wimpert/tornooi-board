@@ -59,7 +59,6 @@ export class TournamentUtils{
 
     public static saveTournament(req: Request, res: Response){
         const tournament = req.body;
-        console.log(tournament);
         const query = "UPDATE tournaments SET  lastupdate = ? , data = ?,  isRef = ? where id = ? ";
         const now = new Date()
         connection.query(query,[now, JSON.stringify(tournament.data), tournament.isRef, tournament.id],function(err : Error ) {

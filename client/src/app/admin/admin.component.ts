@@ -43,17 +43,21 @@ export class AdminComponent implements OnInit {
   }
 
   save():void{
-    console.log("saving");
-
-    this.tournamentService.newTournament(this.tournament.data).subscribe(
-      (data)=>{
-        if(data.id){
-          this.router.navigate(['/admin', data.id]);
-        } else {
-          this.tournament = data;
+    if(this.tournament.id){
+      this.tournamentService.saveTournament(this.tournament).subscribe(
+        tour => this.tournament = tour
+      );
+    } else {
+      this.tournamentService.newTournament(this.tournament.data).subscribe(
+        (data)=>{
+          if(data.id){
+            this.router.navigate(['/admin', data.id]);
+          } else {
+            this.tournament = data;
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   onChanged(match){

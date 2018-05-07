@@ -38,6 +38,7 @@ export class Match{
     static deserialize(input: any) : Match {
         const m = new Match(input.homeTeamName, input.outTeamName);
         Object.assign(m, input);
+        m.startTime = new Date(input.startTime);
         return m;
 
     }
@@ -94,6 +95,7 @@ export class KnockoutMatch extends Match {
     static deserialize(input: any) : Match {
         const m = new KnockoutMatch(input.homeTeamName, input.outTeamName);
         Object.assign(m, input);
+        m.startTime = new Date(input.startTime);
         return m;
     }
 }

@@ -16,6 +16,7 @@ export class TournamentData {
   teams : Team[];
   groups : Group[];
   rounds: KnockOutRound[];
+  womensCup : {group : Group, finals: KnockOutRound};
   refreshInterVal:number;
   showInfoTime:number;
   showSponserTime:number;
@@ -48,7 +49,7 @@ export class TournamentData {
           ["Whoepi-Zwevegem", "Hundes Intertapis", "MVC Café De Gouden Aap", "1255 Snooker Pocket"],
           ["Spectrum", "Re-United", "Samba", "MVC Vermeren"],
           ["FC Dutoit", "Decorte zotten", "Den befkeuning & Co", "Los Borrachos"],
-          ["sv Ziggy", "BP De Vlasbloem", "FC Kruisband", "Whoepi-Boys"],
+          ["sv Ziggy", "BP De Vlasbloem", "Receptiedrinkers B", "Cvt a-deco"],
           ["Dynamo Molhoek", "MVC Foliefotografie", "De Seizoeners", "DRST Eclips Zuipteam"],
   ]
 
@@ -147,28 +148,16 @@ export class TournamentData {
     });
 
 
-    //for developement:
-    /*this.groups.forEach((group, index) => {
-      group.matches.forEach((match) => {
-        match.homeTeamScore = Math.round(Math.random()*5);
-        match.outTeamScore = Math.round(Math.random()*5);
-      });
-      group.orderTeams();
-      addToNextRound(this, index);
-      this.rounds[0].matches.forEach((match)=> {
-        match.homeTeamScore = Math.round(Math.random()*5);
-        match.outTeamScore = Math.round(Math.random()*5);
-        
-        if(match.getOutCome() == MATCH_IS_DRAW){
-          match.homeTeamPenaltyScore = Math.round(Math.random()*5);
-          match.outTeamPenaltyScore = Math.round(Math.random()*5);
-          while(match.getOutCome() ===  MATCH_IS_DRAW){
-            match.outTeamPenaltyScore = Math.round(Math.random()*5);
-          }
-        }
-      });
-    });*/
+   /*WOMENS CUP CODE:*/
+      const womenTeamNames =  ["De Roze Duivels","Ploeg An-Sofie Vlieghe","Radizzepuf","Bavik Royal"];
+      const womenTeams: Team[] = [];
+      womenTeamNames.forEach((name) => womenTeams.push(new Team(name)));
+      const womensGroup =  new Group("Vrouwen", womenTeams);
+      data.womensCup = {group:womensGroup, finals: undefined};
+      const womensFinal = new KnockOutRound(2, "Vrouwen Finale");
+      data.womensCup.finals = womensFinal;
 
+      /*END*/
 
 
     //end

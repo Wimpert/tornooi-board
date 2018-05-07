@@ -4,6 +4,8 @@
   <button><a href="#/print/{{tournament.id}}">Print</a></button>
   <button><a href="#/refs/{{tournament.id}}">Refs </a></button>
   <input type="text" [(ngModel)]="tournament.data.name"> - refreshInterVal: <input type="text" [(ngModel)]="tournament.data.refreshInterVal"> - showSponserTime: <input type="text" [(ngModel)]="tournament.data.showSponserTime"> - showInfoTime: <input type="text" [(ngModel)]="tournament.data.showInfoTime">
+
+
   <div class="group-admin" *ngFor="let group of tournament.data.groups; let index = index" >
     <div class="match-admin-panel">
       <div *ngFor="let match of group.matches">
@@ -22,7 +24,25 @@
 
 
   <div *ngFor="let round of tournament.data.rounds">
-      <knockout-round [round]="round" (processRequest)="handleRequest($event)"></knockout-round>
+    <knockout-round [round]="round" (processRequest)="handleRequest($event)"></knockout-round>
+  </div>
+
+  <div class="woman" *ngIf="tournament.data.womensCup.group as group">
+    <div class="group-admin" >
+      <div class="match-admin-panel">
+        <div *ngFor="let match of group.matches">
+          <poule-match [match]="match"  (onChanged)="onChanged($event)"></poule-match>
+        </div>
+      </div>
+      <div class="group-admin-panel">
+        <div> <strong>{{group.groupname}}</strong> -  <button (click)="process(8)">Verwerk</button>   </div>
+        <div>name  - pl - w - l - d - gs - gc - p - intern</div>
+        <div *ngFor="let team of group.teams">
+          {{team.name}} - {{team.matchesPlayed}} - {{team.matchesWon}} - {{team.matchesLost}} - {{team.matchesDrawed}} - {{team.goalsScored}} - {{team.goalsConcieved}} - {{team.points}}
+          <input type="number" class="scorebox" (change)="onChanged($event)" [(ngModel)]="team.internalIndex">
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

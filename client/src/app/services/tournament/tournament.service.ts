@@ -18,7 +18,7 @@ export class TournamentService {
   private getTournamentUrl()  :  string { return this.getBaseUrl() + "tournament"; }
   private getAllTournamentsUrl()  : string { return this.getBaseUrl() + "tournament"; }
   private newTournamentUrl()  : string { return this.getBaseUrl() +"tournament/new"; }
-  private updateTournamentUrl()  : string { return this.getBaseUrl() +"tournament/update"; }
+  private updateTournamentUrl()  : string { return this.getBaseUrl() +"tournament"; }
 
   public getTournament(id : string): Observable<any> {
     if(id){
@@ -39,6 +39,11 @@ export class TournamentService {
   public newTournament(tour: TournamentData): Observable<any> {
     console.log(tour);
       return this.restService.doPut(this.newTournamentUrl(), tour);
+  }
+
+  public saveTournament(tour: Tournament): Observable<any> {
+    console.log(tour);
+    return this.restService.doPut(this.updateTournamentUrl(), tour);
   }
 
 }

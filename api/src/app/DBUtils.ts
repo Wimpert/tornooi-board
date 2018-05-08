@@ -30,7 +30,9 @@ export class TournamentUtils{
     }
 
     public static createNewTournament(req: Request, res: Response){
+        console.log("herer");
         let tournament = new Tournament();
+        console.log("req: ",req);
         tournament.data = req.body;
         const query = "INSERT INTO tournaments (isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
         connection.query(query, [tournament.isRef, JSON.stringify(tournament.data), tournament.creationdate, tournament.lastupdate], function(err : Error, rows : any){

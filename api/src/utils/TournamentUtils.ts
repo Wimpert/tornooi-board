@@ -428,6 +428,9 @@ export function getMatchesPerGroundOrderByStartTime(tournamentData: TournamentDa
         });
     });
 
+    tournamentData.womensCup.group.matches.forEach((match) => returnVal[match.terrain].push(match));
+    tournamentData.womensCup.finals.matches.forEach((match) => returnVal[match.terrain].push(match));
+
     Object.keys(returnVal).forEach((key) => {
         returnVal[key].sort(sortMatchesByTime);
     });

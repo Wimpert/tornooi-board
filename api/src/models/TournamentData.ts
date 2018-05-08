@@ -5,7 +5,7 @@ import { KnockOutRound } from './KnockOutRound';
 import { Team } from './Team';
 import { Group } from './Group';
 import { getMatchesOrderedForTimeSetting, getMatchesOrderedByMatchNr, addToNextRound } from '../utils/TournamentUtils';
-import {Match} from "./Match";
+import {KnockoutMatch, Match} from "./Match";
 
 
 
@@ -148,15 +148,21 @@ export class TournamentData {
     });
 
 
-   /*WOMENS CUP CODE:*/
+    /*WOMENS CUP CODE:*/
       const womenTeamNames =  ["De Roze Duivels","Ploeg An-Sofie Vlieghe","Radizzepuf","Bavik Royal"];
       const womenTeams: Team[] = [];
       womenTeamNames.forEach((name) => womenTeams.push(new Team(name)));
       const womensGroup =  new Group("Vrouwen", womenTeams);
+      womensGroup.matches.forEach((match) => match.terrain=9);
       data.womensCup = {group:womensGroup, finals: undefined};
       const womensFinal = new KnockOutRound(2, "Vrouwen Finale");
+      const finalsMatches = [];
+      const match1 = new KnockoutMatch();
+      const match2 = new KnockoutMatch();
+      finalsMatches.push(match1,match2);
+      womensFinal.matches = finalsMatches;
+      womensFinal.matches.forEach((match) => match.terrain=9);
       data.womensCup.finals = womensFinal;
-
       /*END*/
 
 
@@ -191,6 +197,10 @@ export class TournamentData {
           newRounds.push(KnockOutRound.deserialize(round));
         });
         returnVal.rounds = newRounds;
+
+
+        returnVal.womensCup.group = Group.deserialize(input.womensCup.group );
+        returnVal.womensCup.finals = KnockOutRound.deserialize(input.womensCup.finals);
 
         return returnVal;
 

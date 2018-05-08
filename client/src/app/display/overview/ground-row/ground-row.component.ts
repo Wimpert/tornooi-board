@@ -14,6 +14,7 @@ export class GroundRowComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.matches);
   }
 
 }

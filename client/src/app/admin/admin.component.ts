@@ -60,9 +60,23 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  onChanged(match){
+  onChanged(event){
+    console.log(event);
+    if(event.matchNumber > 112){
+      this.updateWomensGroup();
+    }
     this.updateStandings();
+
   }
+
+  afterWomensDraw(){
+    this.updateWomensGroup();
+  }
+  updateWomensGroup(){
+    proccesMatches(this.tournament.data.womensCup.group);
+    this.tournament.data.womensCup.group.teams.sort(compareTeams);
+  }
+
 
   process(groupIndex){
    addToNextRound(this.tournament,groupIndex);

@@ -35,14 +35,18 @@
         </div>
       </div>
       <div class="group-admin-panel">
-        <div> <strong>{{group.groupname}}</strong> -  <button (click)="process(8)">Verwerk</button>   </div>
+        <div> <strong>{{group.groupname}}</strong> -  <button (click)="afterWomensDraw()">after draw</button> </div>
         <div>name  - pl - w - l - d - gs - gc - p - intern</div>
         <div *ngFor="let team of group.teams">
           {{team.name}} - {{team.matchesPlayed}} - {{team.matchesWon}} - {{team.matchesLost}} - {{team.matchesDrawed}} - {{team.goalsScored}} - {{team.goalsConcieved}} - {{team.points}}
-          <input type="number" class="scorebox" (change)="onChanged($event)" [(ngModel)]="team.internalIndex">
+          <input type="number" class="scorebox"  [(ngModel)]="team.internalIndex">
         </div>
       </div>
     </div>
+  </div>
+
+  <div  *ngIf="tournament.data.womensCup.finals as womensFinal">
+    <knockout-round  [round]="womensFinal"></knockout-round>
   </div>
 
 </div>

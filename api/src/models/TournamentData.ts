@@ -144,6 +144,7 @@ export class TournamentData {
 
     orderedMatches = getMatchesOrderedByMatchNr(data);
     orderedMatches.forEach(function (match,index) {
+      console.log("machtnr:",(index+1)," ref: ", Refs.list[index]);
       match.ref = Refs.list[index];
     });
 
@@ -153,7 +154,16 @@ export class TournamentData {
       const womenTeams: Team[] = [];
       womenTeamNames.forEach((name) => womenTeams.push(new Team(name)));
       const womensGroup =  new Group("Vrouwen", womenTeams);
-      womensGroup.matches.forEach((match) => match.terrain=9);
+      let  womensMatchNumber = 113;
+      startTime.setHours(12);
+      startTime.setMinutes(30);
+      womensGroup.matches.forEach((match) => {
+        match.terrain=9;
+        match.matchNumber = womensMatchNumber;
+        womensMatchNumber++;
+          match.startTime=startTime;
+          startTime = new Date(startTime.getTime()+ 1000*60*45);
+      });
       data.womensCup = {group:womensGroup, finals: undefined};
       const womensFinal = new KnockOutRound(2, "Vrouwen Finale");
       const finalsMatches = [];
@@ -161,7 +171,13 @@ export class TournamentData {
       const match2 = new KnockoutMatch();
       finalsMatches.push(match1,match2);
       womensFinal.matches = finalsMatches;
-      womensFinal.matches.forEach((match) => match.terrain=9);
+      womensFinal.matches.forEach((match) => {
+        match.terrain=9;
+        match.matchNumber = womensMatchNumber;
+        womensMatchNumber ++;
+          match.startTime=startTime;
+          startTime = new Date(startTime.getTime()+ 1000*60*45);
+      });
       data.womensCup.finals = womensFinal;
       /*END*/
 

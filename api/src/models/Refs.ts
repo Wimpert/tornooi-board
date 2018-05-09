@@ -6,18 +6,22 @@ export class Refs{
 
 
     static list : string[] =
-    ["Frank Dendievel","Boucquez S.","Gino Sandra","Kristof Damman","Wim Dubois","Pascal Princen","Stefaan Balcaen","Nicolas Keygnaert",
-    "Frank Dendievel","Boucquez S.","Gino Sandra","Stephane Vandendriessche","Pol Lavens","Marnic Moyaert","Wim Dubois","Pascal P. ",
-    "Frank Dendievel","Stephane Vandendriessche","Pol Lavens","Kristof Damman","Nicolas Keygnaert","Stefaan Balcaen","Marnic Moyaert","Wim Dubois",
-    "Marnic Moyaert","Wim Dubois","Vincent Moenens","Stephane Vandendriessche","Pol Lavens","Kristof Damman","Pascal Princen","Nicolas Keygnaert",
-    "Marnic Moyaert","Wim Dubois","Vincent Moenens","Stephane Vandendriessche","Pol Lavens","Kristof Damman","Pascal Princen","Nicolas Keygnaert",
-    "Gino Sandra","Boucquez S.","Pascal Princen","Nicolas Keygnaert","Stefaan Balcaen","Kristof Damman","Stephane Vandendriessche","Pol Lavens",
-    "Vincent Moenens","Gerrit Descamps","Eric Vanneste","Wim Dubois","Pascal Princen","Stephane Vandendriessche","Pol Lavens","Stefaan Balcaen",
-    "Stefaan Balcaen","Vincent Moenens","Gerrit Descamps","Eric Vanneste","Boucquez S.","Nicolas Keygnaert","Marnic Moyaert","Kristof Damman",
-    "Gerrit Descamps","Stephane Vandendriessche","Pol Lavens","Pascal Princen","Eric Vanneste","Vincent Moenens","Nicolas Keygnaert","Stefaan Balcaen",
-    "Wim Dubois","Stefaan Balcaen","Nicolas Keygnaert","Kristof Damman","Marnic Moyaert","Vincent Moenens","Eric Vanneste","Gerrit Descamps",
-    "Stephane Vandendriessche","Stefaan Balcaen","Gerrit Descamps","Eric Vanneste","Vincent Moenens","Pascal Princen","Wim Dubois","Kristof Damman",
-    "Marnic Moyaert","Kristof Damman","Wim Dubois","Gerrit Descamps","Eric Vanneste","Vincent Moenens","Pascal Princen","Nicolas Keygnaert"]
+    [
+        "Frank Dendievel","Boucquez S.","Stephane Vandendriessche","Pol Lavens","Marnic Moyaert","Kristof Damman","Wim Dubois","Pascal P. ",
+        "Frank Dendievel","Boucquez S.","Stephane Vandendriessche","Pol Lavens","Marnic Moyaert","Kristof Damman","Wim Dubois","Pascal P. ",
+        "Frank Dendievel","Boucquez S.","Gino Sandra","Stefaan Balcaen","Nicolas Keygnaert","Stephane Vandendriessche","Pol Lavens","Marnic Moyaert",
+        "Frank Dendievel","Boucquez S.","Gino Sandra","Kristof Damman","Wim Dubois","Pascal Princen","Stefaan Balcaen","Nicolas Keygnaert",
+        "Frank Dendievel","Boucquez S.","Gino Sandra","Stephane Vandendriessche","Pol Lavens","Marnic Moyaert","Wim Dubois","Pascal P. ",
+        "Frank Dendievel","Stephane Vandendriessche","Pol Lavens","Kristof Damman","Nicolas Keygnaert","Stefaan Balcaen","Marnic Moyaert","Wim Dubois",
+        "Marnic Moyaert","Wim Dubois","Vincent Moenens","Stephane Vandendriessche","Pol Lavens","Kristof Damman","Pascal Princen","Nicolas Keygnaert",
+        "Gino Sandra","Boucquez S.","Pascal Princen","Nicolas Keygnaert","Stefaan Balcaen","Kristof Damman","Stephane Vandendriessche","Pol Lavens",
+        "Vincent Moenens","Gerrit Descamps","Eric Vanneste","Wim Dubois","Pascal Princen","Stephane Vandendriessche","Pol Lavens","Stefaan Balcaen",
+        "Stefaan Balcaen","Vincent Moenens","Gerrit Descamps","Eric Vanneste","Boucquez S.","Nicolas Keygnaert","Marnic Moyaert","Kristof Damman",
+        "Gerrit Descamps","Stephane Vandendriessche","Pol Lavens","Pascal Princen","Eric Vanneste","Vincent Moenens","Nicolas Keygnaert","Stefaan Balcaen",
+        "Wim Dubois","Stefaan Balcaen","Nicolas Keygnaert","Kristof Damman","Marnic Moyaert","Vincent Moenens","Eric Vanneste","Gerrit Descamps",
+        "Stephane Vandendriessche","Stefaan Balcaen","Gerrit Descamps","Eric Vanneste","Vincent Moenens","Pascal Princen","Wim Dubois","Kristof Damman",
+        "Marnic Moyaert","Kristof Damman","Wim Dubois","Gerrit Descamps","Eric Vanneste","Vincent Moenens","Pascal Princen","Nicolas Keygnaert"
+    ]
 ;
 
 

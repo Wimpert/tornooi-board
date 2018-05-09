@@ -160,9 +160,11 @@ export class TournamentData {
       womensGroup.matches.forEach((match) => {
         match.terrain=9;
         match.matchNumber = womensMatchNumber;
+        match.ref = Refs.list[match.matchNumber-1];
         womensMatchNumber++;
           match.startTime=startTime;
           startTime = new Date(startTime.getTime()+ 1000*60*45);
+
       });
       data.womensCup = {group:womensGroup, finals: undefined};
       const womensFinal = new KnockOutRound(2, "Vrouwen Finale");
@@ -174,9 +176,11 @@ export class TournamentData {
       womensFinal.matches.forEach((match) => {
         match.terrain=9;
         match.matchNumber = womensMatchNumber;
+        match.ref = Refs.list[match.matchNumber-1];
         womensMatchNumber ++;
           match.startTime=startTime;
           startTime = new Date(startTime.getTime()+ 1000*60*30);
+
       });
       data.womensCup.finals = womensFinal;
       /*END*/

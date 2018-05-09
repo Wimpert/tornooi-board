@@ -1,4 +1,7 @@
 Per match: <input type="number" [(ngModel)]="perMatch">
-<div *ngFor="let ref of refKeys">
-  {{ref}} - {{refHash[ref]}} - {{refHash[ref]*perMatch}}€
+<div *ngIf="refs != undefined">
+  <div *ngFor="let ref of getKeys(refs)">
+    {{ref}}:{{refs[ref]}}
+  </div>
 </div>
+

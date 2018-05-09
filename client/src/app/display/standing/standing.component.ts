@@ -63,19 +63,24 @@ export class StandingComponent implements OnInit {
       )),
       shareReplay()
     );
-    this.showSponsors$ = interval(1000).pipe(
-      tap(_ => this.sponsorsToShow = [
-        this.sponsors[this.sponsorsIndex],
-        this.sponsors[this.sponsorsIndex+1],
-        this.sponsors[this.sponsorsIndex+2],
-        this.sponsors[this.sponsorsIndex+3]]),
+    this.showSponsors$ = interval(1000*30).pipe(
+      map(_ => _%2 == 0),
       tap(_ => {
-        this.sponsorsIndex = this.sponsorsIndex + 4;
-        if (this.sponsorsIndex > this.sponsors.length){
-          this.sponsorsIndex =0;
+        if(_){this.sponsorsToShow = [
+          this.sponsors[this.sponsorsIndex],
+          this.sponsors[this.sponsorsIndex+1],
+          this.sponsors[this.sponsorsIndex+2],
+          this.sponsors[this.sponsorsIndex+3]]}
+      }),
+      tap(_ => {
+        if(_){
+          this.sponsorsIndex = this.sponsorsIndex + 4;
+          if (this.sponsorsIndex > this.sponsors.length){
+            this.sponsorsIndex =0;
+          }
         }
       }),
-      map(_ => _%2 == 0)
+      startWith(false)
     )
   }
 

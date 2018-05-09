@@ -431,7 +431,10 @@ export function getMatchesPerGroundOrderByStartTime(tournamentData: TournamentDa
             if(returnVal[match.terrain] === undefined){
                 returnVal[match.terrain] = [];
             }
-            returnVal[match.terrain].push(match);
+            if(match.matchNumber != 97){
+                returnVal[match.terrain].push(match);
+            }
+
         });
     });
 
@@ -453,6 +456,8 @@ export function getMatchesPerGroundOrderByStartTime(tournamentData: TournamentDa
     Object.keys(returnVal).forEach((key) => {
         returnVal[key].sort(sortMatchesByTime);
     });
+
+
     return returnVal;
 
 

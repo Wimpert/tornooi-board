@@ -3,7 +3,6 @@
   height: 100%;
   flex-direction: column;
   display: flex;
-  color: gray;
 }
 
 :host.odd{
@@ -61,3 +60,4 @@
 :host>app-match-box:nth-child(14){
   background: rgba(255, 255, 0, 0.27);
 }
+

@@ -176,7 +176,7 @@ export class TournamentData {
         match.matchNumber = womensMatchNumber;
         womensMatchNumber ++;
           match.startTime=startTime;
-          startTime = new Date(startTime.getTime()+ 1000*60*45);
+          startTime = new Date(startTime.getTime()+ 1000*60*30);
       });
       data.womensCup.finals = womensFinal;
       /*END*/

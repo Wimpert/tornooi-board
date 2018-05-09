@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="294b9885-d21e-4f3e-a96d-b594eef4e93d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/admin/admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/models/TournamentData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/models/TournamentData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/overview.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/overview.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -37,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tournament.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tournament.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="530">
@@ -49,8 +41,8 @@
       <file leaf-file-name="overview.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="27" column="83" lean-forward="true" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+            <state relative-caret-position="240">
+              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -67,8 +59,8 @@
       <file leaf-file-name="admin.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/admin/admin.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="26" column="46" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="58" />
+            <state relative-caret-position="495">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -76,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="match-box.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="match-box.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="130" selection-start-line="3" selection-start-column="130" selection-end-line="3" selection-end-column="130" />
+            <state relative-caret-position="75">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -88,11 +80,20 @@
       <file leaf-file-name="TournamentData.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/src/models/TournamentData.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="197" column="11" selection-start-line="197" selection-start-column="11" selection-end-line="197" selection-end-column="11" />
+            <state relative-caret-position="370">
+              <caret line="183" selection-start-line="183" selection-end-line="183" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TournamentUtils.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/src/utils/TournamentUtils.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2437">
+              <caret line="449" column="45" selection-start-line="449" selection-start-column="45" selection-end-line="449" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -109,20 +110,11 @@
       <file leaf-file-name="ground-row.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+            <state relative-caret-position="165">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ground-row.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -176,7 +168,6 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/api/src/models/Refs.ts" />
         <option value="$PROJECT_DIR$/client/src/app/admin/admin.component.html" />
-        <option value="$PROJECT_DIR$/api/src/models/TournamentData.ts" />
         <option value="$PROJECT_DIR$/client/src/app/tournament-list/tournament-list.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/tournament-list/tournament-list.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/admin/knockout-match/knockout-match.component.ts" />
@@ -195,11 +186,12 @@
         <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.scss" />
         <option value="$PROJECT_DIR$/client/src/app/display/overview/overview.component.scss" />
         <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html" />
-        <option value="$PROJECT_DIR$/client/src/app/admin/admin.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/admin/admin.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts" />
+        <option value="$PROJECT_DIR$/api/src/models/TournamentData.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html" />
       </list>
     </option>
   </component>
@@ -246,6 +238,20 @@
               <item name="tornooi-board" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tornooi-board" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tornooi-board" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tornooi-board" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tornooi-board" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tornooi-board" type="b2602c69:ProjectViewProjectNode" />
@@ -484,12 +490,12 @@
       <workItem from="1525854973445" duration="519000" />
       <workItem from="1525856675097" duration="7132000" />
       <workItem from="1525865878889" duration="784000" />
-      <workItem from="1525870794151" duration="3519000" />
+      <workItem from="1525870794151" duration="3952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52521000" />
+    <option name="totallyTimeSpent" value="52954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -503,10 +509,10 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32088888" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32088888" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2342918" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2342918" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -520,29 +526,29 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32977778" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23216188" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2342918" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32977778" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26488888" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32088888" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="PlantUML" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="PlantUML" order="6" />
+      <window_info id="Favorites" order="3" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -813,13 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/utils/TournamentUtils.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="449" column="45" selection-start-line="449" selection-start-column="45" selection-end-line="449" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -883,54 +882,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="530">
+          <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html">
+    <entry file="file://$PROJECT_DIR$/api/src/utils/TournamentUtils.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="130" selection-start-line="3" selection-start-column="130" selection-end-line="3" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/models/TournamentData.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="197" column="11" selection-start-line="197" selection-start-column="11" selection-end-line="197" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2437">
+          <caret line="449" column="45" selection-start-line="449" selection-start-column="45" selection-end-line="449" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/admin/admin.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="26" column="46" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="58" />
+        <state relative-caret-position="495">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/ground-row.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="83" lean-forward="true" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+        <state relative-caret-position="165">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/services/tournament/tournament.service.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/overview.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
+        <state relative-caret-position="240">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/src/models/TournamentData.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/display/overview/ground-row/match-box/match-box.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

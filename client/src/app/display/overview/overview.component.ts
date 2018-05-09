@@ -22,7 +22,8 @@ export class OverviewComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tournamentService : TournamentService) { }
 
   ngOnInit() {
-    this.matches$ = interval(2000).pipe(
+    this.matches$ = interval(20000).pipe(
+      startWith(1),
       switchMap(_ => this.route.params.pipe(
         tap(_=>console.log("from params",_)),
         switchMap((params) => this.tournamentService.getTournament(params['tid'])),

@@ -3,6 +3,7 @@
   height: 100%;
   flex-direction: column;
   display: flex;
+  color: gray;
 }
 
 :host.odd{
@@ -14,3 +15,49 @@
   text-align: center;
 }
 
+:host>app-match-box:nth-child(odd){
+   border-top: black 1px solid;
+}
+:host>app-match-box:nth-child(even){
+  border-top: black 1px solid;
+}
+
+:host>app-match-box:nth-child(2){
+  background: rgba(0, 128, 0, 0.27);
+}
+:host>app-match-box:nth-child(3){
+  //background: green;
+}
+:host>app-match-box:nth-child(4){
+  background: rgba(0, 46, 255, 0.27);
+}
+:host>app-match-box:nth-child(5){
+  //background: green;
+}
+:host>app-match-box:nth-child(6){
+  background: rgba(255, 0, 0, 0.27);
+}
+:host>app-match-box:nth-child(7){
+  //background: green;
+}
+:host>app-match-box:nth-child(8){
+  background: rgba(128, 0, 128, 0.27);
+}
+:host>app-match-box:nth-child(9){
+  //background: green;
+}
+:host>app-match-box:nth-child(10){
+  background: rgba(165, 42, 42, 0.27);
+}
+:host>app-match-box:nth-child(11){
+  //background: green;
+}
+:host>app-match-box:nth-child(12){
+  background: rgba(255, 165, 0, 0.27);
+}
+:host>app-match-box:nth-child(13){
+  //background: green;
+}
+:host>app-match-box:nth-child(14){
+  background: rgba(255, 255, 0, 0.27);
+}

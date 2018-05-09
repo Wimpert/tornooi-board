@@ -11,10 +11,29 @@ export class GroundRowComponent implements OnInit {
   @Input() matches: Match[];
   @Input() ground: string;
 
+  colors: string[] = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ];
+
   constructor() { }
 
   ngOnInit() {
-    console.log(this.matches);
+    //console.log(this.matches);
   }
 
 }

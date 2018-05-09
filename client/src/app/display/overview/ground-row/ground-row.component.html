@@ -1,2 +1,2 @@
 <div class="ground-number-container">Terrein: {{ground}}</div>
-<app-match-box *ngFor="let match of matches" [match]="match"></app-match-box>
+<app-match-box  *ngFor="let match of matches; let i= index;" [match]="match"></app-match-box>

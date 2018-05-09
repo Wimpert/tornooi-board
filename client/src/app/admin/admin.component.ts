@@ -16,15 +16,10 @@ declare var TournamentUtils : any;
 })
 export class AdminComponent implements OnInit {
 
-  interVal: any;
   tournament : Tournament = undefined;
 
 
   constructor( private router: Router,private route: ActivatedRoute, private tournamentService : TournamentService) { }
-
-  ngOnDestroy() {
-    //window.clearTimeout(this.interVal);
-  }
 
 
   ngOnInit() {
@@ -32,8 +27,7 @@ export class AdminComponent implements OnInit {
         this.tournamentService.getTournament(params['id'])
       ))
       .subscribe((tour: any) => {
-        console.log(tour);
-
+        console.log("from service", tour);
         this.tournament = tour;
         this.updateStandings();
       }
@@ -84,7 +78,7 @@ export class AdminComponent implements OnInit {
 
 
   process(groupIndex){
-   addToNextRound(this.tournament,groupIndex);
+   addToNextRound(this.tournament.data,groupIndex);
 
   }
 

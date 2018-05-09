@@ -41,8 +41,6 @@ export class TournamentService {
   }
 
   public saveTournament(tour: Tournament): Observable<any> {
-    console.log(tour);
-    console.log(JSON.stringify(tour));
     return this.restService.doPost(this.updateTournamentUrl(), tour);
   }
 

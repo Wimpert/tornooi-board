@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {map, shareReplay, switchMap, tap} from "rxjs/operators";
+import {combineLatest, map, shareReplay, startWith, switchMap, tap} from "rxjs/operators";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TournamentService} from "../../services/tournament/tournament.service";
 import {Observable} from "rxjs/Observable";
 import {Tournament} from "../../../../../api/src/models/Tournament";
 import {Match} from "../../../../../api/src/models/Match";
 import {getMatchesPerGroundOrderByStartTime} from "../../../../../api/src/utils/TournamentUtils";
+import {interval} from "rxjs/observable/interval";
+import {of} from "rxjs/observable/of";
 
 @Component({
   selector: 'app-overview',
@@ -20,13 +22,19 @@ export class OverviewComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tournamentService : TournamentService) { }
 
   ngOnInit() {
-    this.matches$ = this.route.params.pipe(
-      tap(_=>console.log(_)),
-      switchMap((params: Params) => this.tournamentService.getTournament(params['tid'])),
-      tap(data=> console.log(data)),
-      map(tournament => getMatchesPerGroundOrderByStartTime(tournament.data)),
-      tap( _ => this.keys = Object.keys(_)),
+    this.matches$ = interval(2000).pipe(
+      switchMap(_ => this.route.params.pipe(
+        tap(_=>console.log("from params",_)),
+        switchMap((params) => this.tournamentService.getTournament(params['tid'])),
+        tap(data=> console.log("from service:", data)),
+        map(tournament => getMatchesPerGroundOrderByStartTime(tournament.data)),
+        tap( _ => this.keys = Object.keys(_)),
+
+      )),
       shareReplay()
     );
+
+
+
   }
 }

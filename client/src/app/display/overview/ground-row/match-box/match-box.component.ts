@@ -13,6 +13,7 @@ export class MatchBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //console.log(this.match);
   }
 
 }

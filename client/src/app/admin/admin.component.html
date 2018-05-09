@@ -27,7 +27,7 @@
     <knockout-round [round]="round" (processRequest)="handleRequest($event)"></knockout-round>
   </div>
 
-  <div class="woman" *ngIf="tournament.data.womensCup.group as group">
+  <div class="woman" *ngIf="tournament.data.womensCup && tournament.data.womensCup.group as group">
     <div class="group-admin" >
       <div class="match-admin-panel">
         <div *ngFor="let match of group.matches">
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div  *ngIf="tournament.data.womensCup.finals as womensFinal">
+  <div  *ngIf="tournament.data.womensCup && tournament.data.womensCup.finals as womensFinal">
     <knockout-round  [round]="womensFinal"></knockout-round>
   </div>
 

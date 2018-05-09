@@ -144,7 +144,7 @@ export class TournamentData {
 
     orderedMatches = getMatchesOrderedByMatchNr(data);
     orderedMatches.forEach(function (match,index) {
-      console.log("machtnr:",(index+1)," ref: ", Refs.list[index]);
+      // console.log("machtnr:",(index+1)," ref: ", Refs.list[index]);
       match.ref = Refs.list[index];
     });
 

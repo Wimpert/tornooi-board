@@ -1,4 +1,3 @@
-
 const express  = require('express');
 const session  = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -10,25 +9,16 @@ var sessionStoreConf = require('./config/SessionStore');
 var MySQLStore = require('express-mysql-session')(session);
 
 
-
-
-
 const passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
 const app  =  express();
 
-app.use(morgan('dev'));
+
+
 
 
 require('./config/passport')(passport); // pass passport for configuration
 
-// set up our express application
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
 // Add headers
 app.use(function (req : any, res: any, next: any) {
@@ -54,6 +44,16 @@ app.use(express.static('./client/dist'));
 
 
 
+// set up our express application// log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+/*app.use(bodyParser.urlencoded({
+    extended: true
+}));*/
+/*app.use(bodyParser.json());*//*
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));*/
+
+
 var sessionStore = new MySQLStore(sessionStoreConf);
 // required for passport
 app.use(session({
@@ -66,6 +66,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 //app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+app.use(bodyParser.json({strict: false}));
+app.use(morgan('dev'));
 
 require('./routes.js')(app, passport);
 

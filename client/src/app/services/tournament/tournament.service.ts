@@ -36,14 +36,14 @@ export class TournamentService {
     return this.restService.doGet(this.getAllTournamentsUrl());
   }
 
-  public newTournament(tour: TournamentData): Observable<any> {
-    console.log(tour);
-      return this.restService.doPut(this.newTournamentUrl(), tour);
+  public newTournament(): Observable<any> {
+    return this.restService.doPost(this.newTournamentUrl());
   }
 
   public saveTournament(tour: Tournament): Observable<any> {
     console.log(tour);
-    return this.restService.doPut(this.updateTournamentUrl(), tour);
+    console.log(JSON.stringify(tour));
+    return this.restService.doPost(this.updateTournamentUrl(), tour);
   }
 
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {KnockOutMatch} from "../../entities/knockout-match";
 import {isUndefined} from "util";
-import {Team} from "../../entities/team";
+import {Team} from "../../../../../api/src/models/Team";
+import {KnockoutMatch} from "../../../../../api/src/models/Match";
 
 @Component({
   selector: 'knockout-match',
@@ -10,17 +10,17 @@ import {Team} from "../../entities/team";
 })
 export class KnockoutMatchComponent implements OnInit {
 
-  @Input() match : KnockOutMatch;
+  @Input() match : KnockoutMatch;
 
   constructor() { }
 
   ngOnInit() {
-    if(isUndefined(this.match.outTeam)){
+    /*if(isUndefined(this.match.outTeam)){
       this.match.outTeam = new Team("");
     }
     if(isUndefined(this.match.homeTeam)){
       this.match.homeTeam = new Team("");
-    }
+    }*/
   }
 
   showPenals(): boolean {

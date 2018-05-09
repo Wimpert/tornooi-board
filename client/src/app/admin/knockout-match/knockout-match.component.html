@@ -1,13 +1,13 @@
 <div>
   {{match.matchNumber}}: {{match.from}} - {{match.to}}
 
-  <input type="text" *ngIf="match.homeTeam" [(ngModel)] = "match.homeTeamName">
+  <input type="text"  [(ngModel)] = "match.homeTeamName">
   <input class="scorebox" type="number" [(ngModel)]="match.homeTeamScore">
   <input class="scorebox" type="number" *ngIf="showPenals()" [(ngModel)]="match.homeTeamPenaltyScore">
   vs
   <input class="scorebox" type="number" *ngIf="showPenals()" [(ngModel)]="match.outTeamPenaltyScore">
   <input class="scorebox" type="number" [(ngModel)]="match.outTeamScore">
-  <input type="text" *ngIf="match.outTeam" [(ngModel)] = "match.outTeamName">
+  <input type="text" [(ngModel)] = "match.outTeamName">
 
 
   -- <input class="groundbox" type="text" [(ngModel)]="match.terrain">

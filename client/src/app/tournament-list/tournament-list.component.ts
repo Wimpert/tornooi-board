@@ -20,4 +20,10 @@ export class TournamentListComponent implements OnInit {
     );
   }
 
+  createNew(){
+    this.tournamentService.newTournament().subscribe(
+      (_) =>  console.log("created", _)
+    );
+  }
+
 }

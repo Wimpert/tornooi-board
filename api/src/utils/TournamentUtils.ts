@@ -416,20 +416,39 @@ function findIndexOfGroupBasedOnName(groupToFind:Group , groups : Group[]) : any
 
 export function getMatchesPerGroundOrderByStartTime(tournamentData: TournamentData) : any {
 
-    const returnVal = { 1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]};
+    //const returnVal  = { 1: [],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]};
+    const returnVal : any = {};
     tournamentData.groups.forEach((round) => {
         round.matches.forEach((match) => {
+            if(returnVal[match.terrain] === undefined){
+                returnVal[match.terrain] = [];
+            }
             returnVal[match.terrain].push(match);
         });
     });
     tournamentData.rounds.forEach((round) => {
         round.matches.forEach((match) => {
+            if(returnVal[match.terrain] === undefined){
+                returnVal[match.terrain] = [];
+            }
             returnVal[match.terrain].push(match);
         });
     });
 
-    tournamentData.womensCup.group.matches.forEach((match) => returnVal[match.terrain].push(match));
-    tournamentData.womensCup.finals.matches.forEach((match) => returnVal[match.terrain].push(match));
+    tournamentData.womensCup.group.matches.forEach((match) =>
+        {
+            if(returnVal[match.terrain] === undefined){
+                returnVal[match.terrain] = [];
+            }
+            returnVal[match.terrain].push(match);
+        }
+    );
+    tournamentData.womensCup.finals.matches.forEach((match) => {
+        if(returnVal[match.terrain] === undefined){
+            returnVal[match.terrain] = [];
+        }
+        returnVal[match.terrain].push(match);
+    });
 
     Object.keys(returnVal).forEach((key) => {
         returnVal[key].sort(sortMatchesByTime);

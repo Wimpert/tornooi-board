@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Group} from "../../../entities/group";
-import {Team} from "../../../entities/team";
+import {Group} from "../../../../../../api/src/models/Group";
+import {Team} from "../../../../../../api/src/models/Team";
 
 @Component({
   selector: 'group-box',

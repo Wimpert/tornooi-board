@@ -33,7 +33,8 @@ export class TournamentUtils{
         console.log("herer");
         let tournament = new Tournament();
         console.log("req: ",req);
-        tournament.data = req.body;
+        //tournament.data = req.body;
+
         const query = "INSERT INTO tournaments (isRef, data, creationdate, lastupdate ) values (?,?,?,?)";
         connection.query(query, [tournament.isRef, JSON.stringify(tournament.data), tournament.creationdate, tournament.lastupdate], function(err : Error, rows : any){
             if (err)
@@ -60,6 +61,8 @@ export class TournamentUtils{
     }
 
     public static saveTournament(req: Request, res: Response){
+        console.log("here we are saving ..");
+        //console.log(req);
         const tournament = req.body;
         const query = "UPDATE tournaments SET  lastupdate = ? , data = ?,  isRef = ? where id = ? ";
         const now = new Date()

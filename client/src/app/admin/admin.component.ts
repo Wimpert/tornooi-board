@@ -1,11 +1,11 @@
 import { KnockOutRound } from './../../../../api/src/models/KnockOutRound';
-import { TournamentData } from './../../../../api/src/models/TournamentData';
 import { Component, OnInit, group } from '@angular/core';
 import {TournamentService} from "../services/tournament/tournament.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import { switchMap } from 'rxjs/operators';
 import { proccesMatches, compareTeams, addToNextRound, processRound } from '../../../../api/src/utils/TournamentUtils';
 import {Tournament} from "../../../../api/src/models/Tournament";
+import {TournamentData} from "../../../../api/src/models/TournamentData";
 
 declare var TournamentUtils : any;
 
@@ -45,10 +45,15 @@ export class AdminComponent implements OnInit {
   save():void{
     if(this.tournament.id){
       this.tournamentService.saveTournament(this.tournament).subscribe(
-        tour => this.tournament = tour
+        (tour) => {
+          console.log("came bock");
+
+          this.tournament = tour;
+          this.tournament.data  = TournamentData.deserialize(tour.data);
+        }
       );
     } else {
-      this.tournamentService.newTournament(this.tournament.data).subscribe(
+      this.tournamentService.newTournament().subscribe(
         (data)=>{
           if(data.id){
             this.router.navigate(['/admin', data.id]);

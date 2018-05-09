@@ -123,8 +123,8 @@ module.exports = function(app, passport) {
 
     app.get('/api/tournament', DBUtils.TournamentUtils.getAllTournaments);
     app.get('/api/tournament/:id', DBUtils.TournamentUtils.getTournament);
-    app.put('/api/tournament/new', isLoggedIn, DBUtils.TournamentUtils.createNewTournament);
-    app.put('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
+    app.post('/api/tournament/new', isLoggedIn, DBUtils.TournamentUtils.createNewTournament);
+    app.post('/api/tournament', isLoggedIn, DBUtils.TournamentUtils.saveTournament);
 
 
 };

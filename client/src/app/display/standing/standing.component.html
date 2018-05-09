@@ -1,0 +1,6 @@
+<div *ngIf="showSponsors$ | async">
+  <app-group-container [group]="group" *ngFor="let group of (groups$ | async) "></app-group-container>
+</div>
+<div *ngIf="!(showSponsors$ | async)">
+  <app-sponsor-container *ngFor="let imageName of sponsorsToShow" [imageName]="imageName"></app-sponsor-container>
+</div>

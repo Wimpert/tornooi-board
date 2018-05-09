@@ -150,7 +150,7 @@ export class TournamentData {
 
 
     /*WOMENS CUP CODE:*/
-      const womenTeamNames =  ["De Roze Duivels","Ploeg An-Sofie Vlieghe","Radizzepuf","Bavik Royal"];
+      const womenTeamNames =  ["De Roze Duivels","FC Gullegem","Radizzepuf","Bavik Royal"];
       const womenTeams: Team[] = [];
       womenTeamNames.forEach((name) => womenTeams.push(new Team(name)));
       const womensGroup =  new Group("Vrouwen", womenTeams);

@@ -30,6 +30,9 @@ import { LoginComponent } from './login/login.component';
 import { OverviewComponent } from './display/overview/overview.component';
 import { GroundRowComponent } from './display/overview/ground-row/ground-row.component';
 import { MatchBoxComponent } from './display/overview/ground-row/match-box/match-box.component';
+import { StandingComponent } from './display/standing/standing.component';
+import { GroupContainerComponent } from './display/standing/group-container/group-container.component';
+import { SponsorContainerComponent } from './display/standing/sponsor-container/sponsor-container.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { MatchBoxComponent } from './display/overview/ground-row/match-box/match
     OverviewComponent,
     GroundRowComponent,
     MatchBoxComponent,
+    StandingComponent,
+    GroupContainerComponent,
+    SponsorContainerComponent,
 
 
   ],

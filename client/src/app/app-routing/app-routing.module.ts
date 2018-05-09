@@ -9,6 +9,7 @@ import {SettingsComponent} from "../settings/settings.component";
 import {PrintComponent} from "../admin/print/print.component";
 import {RefsComponent} from "../admin/refs/refs.component";
 import {OverviewComponent} from "../display/overview/overview.component";
+import {StandingComponent} from "../display/standing/standing.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'all',  component: TournamentListComponent},
   { path: 'admin',  component: AdminComponent},
   { path: 'overview/:tid',  component: OverviewComponent },
+  { path: 'stand/:tid',  component: StandingComponent },
   { path: 'sheet',  component: GameSheetComponent},
   { path: 'rounds/:tid',  component: RoundsDisplayComponent},
   { path: 'groups/:tid/:gid',  component: GroupsDisplayComponent},

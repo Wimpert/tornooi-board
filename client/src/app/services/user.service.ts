@@ -30,7 +30,7 @@ export class UserService {
     //TODO: this should not stop on error !:
     this.userLoggedIn$ = this.loginRequest$.pipe(
       switchMap(body =>
-        this._httpClient.post<User>(this._baseUrl + "login", body ,{withCredentials:true}).pipe(
+        this._httpClient.post<User>("http://192.168.0.128:8888/api/" + "login", body ,{withCredentials:true}).pipe(
           catchError(error => {
             if(error.error && error.error.code){
               this.userLoginFailedMessage$.next(error.error);
@@ -49,7 +49,7 @@ export class UserService {
 
     this.userCreated$ = this.userCreateRequest$.pipe(
       switchMap(user =>
-        this._httpClient.post<User>(this._baseUrl+"signup",user,{withCredentials:true}).pipe(
+        this._httpClient.post<User>("http://192.168.0.128:8888/api/"+"signup",user,{withCredentials:true}).pipe(
           catchError(error => {
             if(error.error && error.error.code){
               this.userSignUpFailedMessage$.next(error.error);
@@ -69,7 +69,7 @@ export class UserService {
 
     this.userLoggedOut$ = this.logoutRequest$.pipe(
       switchMap(_ =>
-        this._httpClient.get<boolean>(this._baseUrl+"logout",{withCredentials:true})
+        this._httpClient.get<boolean>("http://192.168.0.128:8888/api/"+"logout",{withCredentials:true})
       ),
       share()
     );

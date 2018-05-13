@@ -14,7 +14,7 @@ export class TournamentService {
   constructor(private settingsService : SettingsService , private  restService : RestService) { }
 
   //public getBaseUrl() : string { return this.settingsService.backendUrl; }
-  public getBaseUrl() : string { return "http://localhost:8888/api/"; }
+  public getBaseUrl() : string { return "http://192.168.0.128:8888/api/"; }
   private getTournamentUrl()  :  string { return this.getBaseUrl() + "tournament"; }
   private getAllTournamentsUrl()  : string { return this.getBaseUrl() + "tournament"; }
   private newTournamentUrl()  : string { return this.getBaseUrl() +"tournament/new"; }
